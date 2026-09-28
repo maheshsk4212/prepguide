@@ -1,0 +1,843 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#0E6B58">
+<title>Mahesh Interview Playbook</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+:root{
+  --bg:#F4F6F5; --surface:#FFFFFF; --sunk:#E9EEEC; --ink:#14221F; --muted:#5A6B66; --line:#D5DDDA;
+  --accent:#0E6B58; --accent-soft:#DCEFE9; --accent-ink:#FFFFFF;
+  --warn:#9A5B00; --warn-soft:#FBEFD9; --bad:#A8321F; --bad-soft:#F9E3DE;
+  --ex:#3E4FA3; --ex-soft:#E3E7F8; --hy:#6B4E9E; --hy-soft:#EDE6F7;
+  --display:"Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --body:"IBM Plex Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --mono:"IBM Plex Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --bg:#0F1614; --surface:#17211E; --sunk:#1F2B28; --ink:#E6EEEB; --muted:#9AADA7; --line:#2C3A36;
+    --accent:#4FC2A5; --accent-soft:#173A32; --accent-ink:#08201A;
+    --warn:#F0B35A; --warn-soft:#3A2B12; --bad:#F08A76; --bad-soft:#3D1F19;
+    --ex:#9AA9F0; --ex-soft:#232A4A; --hy:#C4A8EE; --hy-soft:#2E2442;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#0F1614; --surface:#17211E; --sunk:#1F2B28; --ink:#E6EEEB; --muted:#9AADA7; --line:#2C3A36;
+  --accent:#4FC2A5; --accent-soft:#173A32; --accent-ink:#08201A;
+  --warn:#F0B35A; --warn-soft:#3A2B12; --bad:#F08A76; --bad-soft:#3D1F19;
+  --ex:#9AA9F0; --ex-soft:#232A4A; --hy:#C4A8EE; --hy-soft:#2E2442;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:400 16px/1.6 var(--body);margin:0}
+.wrap{max-width:760px;margin:0 auto;padding-inline:16px;padding-block:0 64px}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.2}
+h1{font-size:clamp(28px,6vw,40px);font-weight:700;letter-spacing:-.01em}
+h2{font-size:24px;font-weight:700}
+h3{font-size:18px;font-weight:600}
+p{margin:0}
+.label{font:500 12px/1.3 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+
+/* top nav */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:var(--bg);border-bottom:1px solid var(--line)}
+.nav-in{max-width:760px;margin:0 auto;padding-inline:16px;padding-block:10px;display:flex;flex-direction:column;gap:8px}
+.chips{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}
+.chips::-webkit-scrollbar{display:none}
+.chips a{flex:0 0 auto;text-decoration:none;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:6px 12px;font-size:14px;font-weight:500;white-space:nowrap}
+.chips a:hover,.chips a:focus-visible{border-color:var(--accent);color:var(--accent);outline:none}
+.search{width:100%;font:inherit;font-size:15px;padding:9px 12px;border-radius:10px;border:1px solid var(--line);background:var(--surface);color:var(--ink)}
+.search:focus{outline:2px solid var(--accent);outline-offset:1px}
+
+header.hero{padding-block:28px 8px;display:flex;flex-direction:column;gap:10px}
+header.hero p{color:var(--muted);max-width:60ch}
+
+section{padding-top:36px;display:flex;flex-direction:column;gap:14px;scroll-margin-top:110px}
+.sec-head{display:flex;flex-direction:column;gap:4px}
+.sec-head p{color:var(--muted);font-size:15px}
+
+/* legend */
+.legend{display:flex;flex-wrap:wrap;gap:8px}
+.tag{display:inline-flex;align-items:center;gap:4px;font:500 11px/1 var(--mono);letter-spacing:.05em;text-transform:uppercase;padding:5px 8px;border-radius:6px;white-space:nowrap}
+.t-lived{background:var(--accent-soft);color:var(--accent)}
+.t-ex{background:var(--ex-soft);color:var(--ex)}
+.t-hy{background:var(--hy-soft);color:var(--hy)}
+.t-fill{background:var(--warn-soft);color:var(--warn)}
+
+/* rules / callouts */
+.rules{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.rule{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:6px}
+.rule b{font-family:var(--display);font-size:16px}
+.rule p{font-size:15px;color:var(--muted)}
+.say{display:grid;gap:8px}
+.say div{border-radius:10px;padding:10px 12px;font-size:15px}
+.no{background:var(--bad-soft);color:var(--ink)}
+.no::before{content:"Don't say  ";font:500 11px var(--mono);color:var(--bad);letter-spacing:.05em;text-transform:uppercase}
+.yes{background:var(--accent-soft)}
+.yes::before{content:"Say  ";font:500 11px var(--mono);color:var(--accent);letter-spacing:.05em;text-transform:uppercase}
+
+/* interview cards */
+.cos{display:grid;gap:10px;grid-template-columns:repeat(auto-fill,minmax(230px,1fr))}
+.co{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:8px}
+.co-top{display:flex;justify-content:space-between;align-items:flex-start;gap:8px}
+.co h3{font-size:17px}
+.co .role{font-size:14px;color:var(--muted)}
+.co ul{margin:0;padding-left:18px;font-size:14px;display:flex;flex-direction:column;gap:3px}
+.stat{font:500 11px/1 var(--mono);text-transform:uppercase;letter-spacing:.05em;padding:5px 7px;border-radius:6px;white-space:nowrap;background:var(--sunk);color:var(--muted)}
+.stat.live{background:var(--accent-soft);color:var(--accent)}
+.stat.check{background:var(--warn-soft);color:var(--warn)}
+
+/* Q&A */
+.qa{display:flex;flex-direction:column;gap:8px}
+details.q{background:var(--surface);border:1px solid var(--line);border-radius:12px}
+details.q[open]{border-color:var(--accent)}
+details.q summary{list-style:none;cursor:pointer;padding:13px 14px;display:flex;gap:10px;align-items:flex-start}
+details.q summary::-webkit-details-marker{display:none}
+details.q summary:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:12px}
+.qtext{flex:1;font-weight:600;font-size:16px;line-height:1.4}
+.chev{flex:0 0 auto;width:20px;height:20px;margin-top:1px;color:var(--muted);transition:transform .15s}
+details[open] .chev{transform:rotate(90deg)}
+.qbody{padding:0 14px 14px;display:flex;flex-direction:column;gap:10px}
+.ans{border-left:3px solid var(--accent);padding-left:12px;display:flex;flex-direction:column;gap:8px}
+.ans p{font-size:16px}
+.note{font-size:14px;color:var(--muted);background:var(--sunk);border-radius:8px;padding:8px 10px}
+.fillnote{font-size:14px;background:var(--warn-soft);border-radius:8px;padding:8px 10px}
+.fillnote b{color:var(--warn)}
+.fu{font-size:14px;display:flex;flex-direction:column;gap:4px}
+.fu b{font-weight:600}
+.meta{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.done-row{display:flex;align-items:center;gap:8px;font-size:14px;color:var(--muted)}
+.done-row input{width:18px;height:18px;accent-color:var(--accent)}
+details.q.is-done .qtext{color:var(--muted)}
+details.q.is-done summary::after{content:"✓";color:var(--accent);font-weight:700}
+
+.group-title{font:600 13px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--accent);padding-top:10px}
+
+/* stories */
+.stories{display:grid;gap:10px}
+.story{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:10px}
+.story-top{display:flex;justify-content:space-between;gap:8px;align-items:flex-start;flex-wrap:wrap}
+.opener{font-style:italic;font-size:16px}
+.beats{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:4px;font-size:15px}
+.uses{font-size:13px;color:var(--muted)}
+
+/* tables */
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:560px;font-size:14px}
+th,td{text-align:left;vertical-align:top;padding:10px 12px;border-bottom:1px solid var(--line)}
+th{font:500 11px var(--mono);letter-spacing:.05em;text-transform:uppercase;color:var(--muted);background:var(--sunk)}
+tr:last-child td{border-bottom:0}
+td.num{font-family:var(--display);font-weight:700;font-size:16px;white-space:nowrap;font-variant-numeric:tabular-nums}
+
+/* flows */
+.flow{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:14px}
+.flow span{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:6px 10px}
+.flow i{font-style:normal;color:var(--muted)}
+
+.plan{display:grid;gap:10px;grid-template-columns:repeat(auto-fill,minmax(200px,1fr))}
+.day{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;display:flex;flex-direction:column;gap:6px}
+.day ul{margin:0;padding-left:18px;font-size:14px}
+
+.fill-list{counter-reset:f;display:flex;flex-direction:column;gap:8px;margin:0;padding:0;list-style:none}
+.fill-list li{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--warn);border-radius:10px;padding:10px 12px;font-size:15px;display:flex;gap:10px}
+.fill-list li::before{counter-increment:f;content:counter(f);font:600 14px var(--mono);color:var(--warn);min-width:20px}
+
+.empty{display:none;color:var(--muted);font-size:15px;padding:10px 0}
+.hide{display:none!important}
+footer{padding-top:40px;color:var(--muted);font-size:13px}
+@media (prefers-reduced-motion: reduce){.chev{transition:none}}
+</style>
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<nav class="nav" aria-label="Sections">
+  <div class="nav-in">
+    <div class="chips">
+      <a href="#today">Taxi sheet</a>
+      <a href="#interviews">Interviews</a>
+      <a href="#fill">Fill in</a>
+      <a href="#stories">8 stories</a>
+      <a href="#qa">Q&amp;A</a>
+      <a href="#metrics">Numbers</a>
+      <a href="#rapid">Rapid fire</a>
+      <a href="#live">Live task</a>
+      <a href="#ask">Ask them</a>
+      <a href="#plan">7-day plan</a>
+    </div>
+    <input id="search" class="search" type="search" placeholder="Search any question (e.g. tokens, RTL, salary)" aria-label="Search questions">
+  </div>
+</nav>
+
+<div class="wrap">
+<header class="hero">
+  <span class="label">Lead Product Designer · Banking · GCC</span>
+  <h1>Interview Playbook</h1>
+  <p>Everything from the four prep drafts, your past interviews and the job briefs, in one place. Answers are short so you can say them in 60–90 seconds. Tap a question to open the answer.</p>
+  <div class="legend">
+    <span class="tag t-lived">Lived</span>
+    <span class="tag t-ex">Exercise</span>
+    <span class="tag t-hy">Approach</span>
+    <span class="tag t-fill">Needs your facts</span>
+  </div>
+</header>
+
+<!-- TODAY -->
+<section id="today">
+  <div class="sec-head">
+    <span class="label">Read this in the taxi</span>
+    <h2>The one-page version</h2>
+  </div>
+  <div class="rules">
+    <div class="rule"><b>Your one line</b><p>“I bring hands-on product design, deep banking experience, design systems at scale, and team leadership.”</p></div>
+    <div class="rule"><b>Say what you did</b><p>“At JMR, I…” beats “I would…”. Use “I would” only when you say it is an approach.</p></div>
+    <div class="rule"><b>Own your numbers</b><p>Say a number as yours, or don’t say it. Never quote your resume.</p></div>
+    <div class="rule"><b>Name the answer type</b><p>Lived work, a design exercise, or an approach. Saying which one builds trust.</p></div>
+    <div class="rule"><b>Keep it short</b><p>60–90 seconds. Start with one line they can stop you after.</p></div>
+    <div class="rule"><b>Pick the right story</b><p>Design system → ADCB. Research → NMB. Complex flow → multi-authorizer. Research + numbers → ClinChoice.</p></div>
+  </div>
+  <div class="say">
+    <div class="no">“My resume says we cut handoff from 5 days to 2.”</div>
+    <div class="yes">“We cut handoff from 5 days to 2.” (only if you can explain how you measured it)</div>
+    <div class="no">“I would treat RTL as a system-level requirement…” (when you don’t say if you shipped it)</div>
+    <div class="yes">“My MENA work didn’t include a full Arabic build. Here’s how I’d set up RTL in a token system.”</div>
+  </div>
+  <div class="flow" aria-label="Answer formula">
+    <span>Situation</span><i>→</i><span>What I owned</span><i>→</i><span>What I did</span><i>→</i><span>What changed</span><i>→</i><span>What I learned</span>
+  </div>
+</section>
+
+<!-- INTERVIEWS -->
+<section id="interviews">
+  <div class="sec-head">
+    <span class="label">Your pipeline</span>
+    <h2>Interviews and what each one tests</h2>
+    <p>Checked against your Gmail on 28 Sep. Anything marked “check” has no recent reply.</p>
+  </div>
+  <div class="cos" id="cos"></div>
+</section>
+
+<!-- FILL -->
+<section id="fill">
+  <div class="sec-head">
+    <span class="label">Only you know these</span>
+    <h2>Fill these in before any call</h2>
+    <p>These are the gaps that keep coming back. Until they’re filled, use the safe line in each answer.</p>
+  </div>
+  <ol class="fill-list">
+    <li>5 → 2 days handoff: what did you count, and how did you know it was 5 before?</li>
+    <li>98% WCAG: which tool or method? What was the missing 2%?</li>
+    <li>30% onboarding: onboarding of whom? What took less time?</li>
+    <li>ClinChoice 20% / 40%: who measured it, and over what period?</li>
+    <li>200+ components: roughly how many base parts vs bigger patterns?</li>
+    <li>Arabic / RTL: did any of your work include it? What exactly?</li>
+    <li>Crevato: active now? Paid clients? Will you keep it if hired?</li>
+    <li>Location and visa: recruiter forms say “Bengaluru / India”, but you’re in Dubai. Pick one true answer and use it everywhere. Notice period in your emails: 30 days (can be 15).</li>
+    <li>Salary: emails show AED 20K/month (Virtusa) and ₹35 LPA (India). Confirm these, and set your lowest AED figure.</li>
+    <li>A real stakeholder disagreement: who, what, how it ended.</li>
+    <li>A real mistake that cost time or rework.</li>
+    <li>A real tight deadline: scope, time, what you cut.</li>
+  </ol>
+</section>
+
+<!-- STORIES -->
+<section id="stories">
+  <div class="sec-head">
+    <span class="label">Learn these, not 100 answers</span>
+    <h2>Your 8 stories</h2>
+    <p>Almost every question can be answered with one of these. Rehearse each out loud until it takes 90 seconds.</p>
+  </div>
+  <div class="stories" id="storyList"></div>
+</section>
+
+<!-- QA -->
+<section id="qa">
+  <div class="sec-head">
+    <span class="label">Tap to open · tick when you can say it without notes</span>
+    <h2>Questions and answers</h2>
+  </div>
+  <div class="qa" id="qaList"></div>
+  <p class="empty" id="empty">No question matches that search.</p>
+</section>
+
+<!-- METRICS -->
+<section id="metrics">
+  <div class="sec-head">
+    <span class="label">Every number invites a follow-up</span>
+    <h2>Your numbers, and how to defend them</h2>
+    <p>If you can’t answer the follow-ups in one sentence, use the safe line instead.</p>
+  </div>
+  <div class="tbl">
+    <table>
+      <thead><tr><th>Number</th><th>They will ask</th><th>Safe line if you can’t defend it</th></tr></thead>
+      <tbody>
+        <tr><td class="num">200+</td><td>What counts as a component? Base parts or patterns too? Who maintains them? Give 3 examples.</td><td>“A large multi-brand system, a couple of hundred parts, used across three bank deployments.”</td></tr>
+        <tr><td class="num">5 → 2 days</td><td>What is “handoff”? Who measured it? Over how many releases?</td><td>“Handoff got much faster because developers stopped asking the same questions.”</td></tr>
+        <tr><td class="num">98% AA</td><td>Which tool? Automated or manual? What was the 2%? Design files or live code?</td><td>“We built to WCAG 2.1 AA across 150+ screens with no critical issues.”</td></tr>
+        <tr><td class="num">30%</td><td>Onboarding of whom? What was the baseline? What took less time?</td><td>“New designers got up to speed noticeably faster.”</td></tr>
+        <tr><td class="num">20% / 40%</td><td>How many users? What baseline? Who measured? Which tickets?</td><td>“Tasks got faster and support volume dropped. I don’t have the exact numbers in front of me.”</td></tr>
+        <tr><td class="num">10+ modules</td><td>Name them. Which did you own vs your team?</td><td>List 4–5 by name: retail, corporate, trade finance, approvals…</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- RAPID -->
+<section id="rapid">
+  <div class="sec-head">
+    <span class="label">30 seconds each</span>
+    <h2>Rapid fire</h2>
+    <p>Say the answer, then stop. Don’t add a story unless they ask.</p>
+  </div>
+  <div class="qa" id="rapidList"></div>
+</section>
+
+<!-- LIVE -->
+<section id="live">
+  <div class="sec-head">
+    <span class="label">ENBD · Backbase · Gemini</span>
+    <h2>Live design task and portfolio walk-through</h2>
+  </div>
+  <h3>Live task in 5 steps</h3>
+  <div class="flow">
+    <span>1 Clarify: user, task, goal, limits</span><i>→</i><span>2 Pick the one problem that matters most</span><i>→</i><span>3 Flow: entry → decide → act → confirm → result</span><i>→</i><span>4 Edge cases: error, empty, loading, rights, offline, recovery</span><i>→</i><span>5 “I’d test the riskiest guess first”</span>
+  </div>
+  <p class="note">Talk while you draw. Silence reads as stuck. Say what you are choosing and why, and what you are leaving out.</p>
+  <h3>20-minute portfolio walk-through</h3>
+  <div class="tbl">
+    <table>
+      <thead><tr><th>Minutes</th><th>Cover</th></tr></thead>
+      <tbody>
+        <tr><td class="num">0–2</td><td>Context: what product, which bank, your role</td></tr>
+        <tr><td class="num">2–5</td><td>Problem: who were the users, what was hard</td></tr>
+        <tr><td class="num">5–8</td><td>Research: what you learned</td></tr>
+        <tr><td class="num">8–12</td><td>UX: flow, structure, key decisions</td></tr>
+        <tr><td class="num">12–16</td><td>UI and system: components, variables, responsive, accessibility</td></tr>
+        <tr><td class="num">16–18</td><td>Working with others: product, engineering, QA</td></tr>
+        <tr><td class="num">18–20</td><td>Result and what you’d do differently</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="rules">
+    <div class="rule"><b>Order to show</b><p>1 ADCB design system · 2 NMB discovery · 3 Multi-authorizer flow · Backup: ClinChoice</p></div>
+    <div class="rule"><b>Backbase checks</b><p>File order, naming, components, styles, versions, how you present, how you handle people, speaking up early.</p></div>
+    <div class="rule"><b>Before the call</b><p>Portfolio password ready to paste. PDF copy offline. Figma exports saved. Screen-share tested. Phone hotspot as backup.</p></div>
+  </div>
+</section>
+
+<!-- ASK -->
+<section id="ask">
+  <div class="sec-head">
+    <span class="label">Never say “no questions”</span>
+    <h2>Questions to ask them</h2>
+  </div>
+  <div class="rules">
+    <div class="rule"><b>Product</b><p>“How early is design involved, before requirements reach the team?”</p></div>
+    <div class="rule"><b>Design system</b><p>“How is ownership of the design system split between design and engineering today?”</p></div>
+    <div class="rule"><b>The role</b><p>“What would you expect this person to have done in the first six months?”</p></div>
+    <div class="rule"><b>The team</b><p>“What is the hardest design problem the team is facing right now?”</p></div>
+    <div class="rule"><b>Banking</b><p>“How do you balance security steps with a smooth customer journey here?”</p></div>
+    <div class="rule"><b>Arabic</b><p>“Are Arabic and English designed together, or is Arabic done after?”</p></div>
+  </div>
+</section>
+
+<!-- PLAN -->
+<section id="plan">
+  <div class="sec-head">
+    <span class="label">Out loud, not in your head</span>
+    <h2>7-day practice plan</h2>
+  </div>
+  <div class="plan">
+    <div class="day"><span class="label">Day 1</span><h3>Your pitch</h3><ul><li>About yourself</li><li>Why leave JMR</li><li>Why product</li><li>Why hire you</li><li>Fill in items 7–9</li></ul></div>
+    <div class="day"><span class="label">Day 2</span><h3>Design system</h3><ul><li>ADCB story</li><li>Tokens, variables</li><li>Governance, versions</li><li>Multi-brand toggle</li><li>Fill in items 1, 2, 5</li></ul></div>
+    <div class="day"><span class="label">Day 3</span><h3>Research and people</h3><ul><li>NMB story</li><li>Workshops</li><li>Stakeholder story (item 10)</li></ul></div>
+    <div class="day"><span class="label">Day 4</span><h3>Banking</h3><ul><li>Transfer, failed debit</li><li>Maker-checker</li><li>Fraud, OBDX limits</li><li>RTL, KYC, SCA</li></ul></div>
+    <div class="day"><span class="label">Day 5</span><h3>Leadership</h3><ul><li>Team of 5</li><li>Weak performer</li><li>Federal Bank questions</li><li>Mistake + deadline (11, 12)</li></ul></div>
+    <div class="day"><span class="label">Day 6</span><h3>Pressure</h3><ul><li>All rapid fire, no notes</li><li>60 seconds each</li><li>Record yourself once</li></ul></div>
+    <div class="day"><span class="label">Day 7</span><h3>Full mock</h3><ul><li>Recruiter 10 min</li><li>Hiring manager 20</li><li>Design lead 30</li><li>Case 20 · Salary 5</li></ul></div>
+  </div>
+</section>
+
+<footer>Built from prep drafts v1–v4, your interview notes, the ENBD, Backbase and Federal Bank briefs, and your Gmail (checked 28 Sep 2026). Ticks are saved on this device only.</footer>
+</div>
+
+<script>
+const T = {lived:["t-lived","Lived"], ex:["t-ex","Exercise"], hy:["t-hy","Approach"], fill:["t-fill","Needs your facts"]};
+
+const companies = [
+  {n:"i-exceed", r:"Lead UI/UX Designer · Bangalore", s:["live","L1 coming"], p:["Recruiter Parthiban M (24 Sep): L1 to be scheduled soon","i-exceed builds digital banking platforms, so banking depth is your edge","JD stresses: estimation and schedules, team and client coordination, IA, task flows, prototypes","JD names Adobe XD, Photoshop, JustInMind/Marvel. Be ready to say how you work if they use XD, not Figma","See the “i-exceed” questions below"]},
+  {n:"Virtusa", r:"UI/UX Design Lead · Dubai", s:["live","Being submitted"], p:["Via Innovations Global (Sonal, 25 Sep)","Form lists: expected AED 20K, notice 30 days (can be 15), location India","You told her Virtusa already called you directly. Clear this up so you aren’t submitted twice","Services company, like JMR. Lead with delivery, client handling, design systems"]},
+  {n:"Nagarro", r:"Mettl test done 24 Sep", s:["live","Waiting"], p:["Test submitted. Nagarro will contact you if shortlisted","Next rounds usually: technical interview, then HR","You asked Lokesh for the JD. Still no role details, so prep the general design Q&A"]},
+  {n:"Gemini Solutions", r:"Senior UI Designer, Banking · India", s:["check","No reply"], p:["Round 1 on 2 Sep. Task sent same day","You submitted 5 Sep: AED → INR transfer with co-pilot, 5-page Figma, 2-page rationale","Followed up 9 Sep, no reply yet","Their rule: no AI tools in the designs. In their rounds, talk about AI as your process, not as what made the screens"]},
+  {n:"Federal Bank", r:"UI/UX Design (Mobile Banking) · Bangalore", s:["check","No result email"], p:["Via HiPotz (Ankit Gupta). Interviews on 17 Aug and 26 Aug","No result in your inbox. Worth a polite follow-up to Ankit","Asked: vendor dependency, no new team, asking HR for people, versioning","Title says mobile banking, so prep the mobile banking questions below"]},
+  {n:"Sampoorna client", r:"UX/UI Designer (JL6) · Noida", s:["check","Waiting"], p:["Unnamed IT company with banking software products","One face-to-face round in Noida","You sent details on 10 Sep and 18 Sep (two recruiters, same role). Watch for double submission"]},
+  {n:"Backbase", r:"UX Designer", s:["check","No news since July"], p:["Live technical round done using the NMB corporate approval flow","60 min with two UX designers, Figma file review","Wealth case study was the other option","No email since 16 Jul. Worth a follow-up to Nayeem"]},
+  {n:"Emirates NBD", r:"Senior Product Designer · Dubai", s:["","Closed 21 Sep"], p:["1st interview 8 Sep with Maaz Mahboob (Lead Product Designer)","Declined 21 Sep: went with another candidate. No feedback given yet","Keep the fraud task. It still works as an Exercise story elsewhere"]},
+  {n:"Applied, no reply yet", r:"Dubai and India", s:["","Applied"], p:["talabat: Product Designer and Staff Product Designer","Emirates Group: Digital Product Specialist","Arcsen: UI/UX Lead (Airlines)","Brainlake, Zerozilla, Indeed roles"]},
+  {n:"GSSTech · CommBank · Apple", r:"Older threads", s:["check","Not in inbox"], p:["No recent emails found for these. Check their portals (Workable etc.) before you prep"]},
+  {n:"TIAA", r:"Design Systems Specialist", s:["","Closed"], p:["Negative feedback on take-home","Gap was Tokens Studio (the tool). Learn it before the next DS role"]}
+];
+
+const stories = [
+  {t:"ADCB design system", type:"lived", open:"At JMR I built a 200+ component multi-brand design system used across three bank deployments.",
+   beats:["Many modules (retail, corporate, trade finance) were drifting apart","I audited screens and found repeated patterns","Set up foundations and semantic tokens, then components and variants","Added rules for how new parts are proposed, reviewed and retired","Result: faster handoff, fewer developer questions"],
+   uses:"Design system, tokens, Figma, governance, multi-brand, accessibility", fill:"Items 1, 2, 5: handoff number, WCAG method, component split"},
+  {t:"NMB discovery, Tanzania", type:"lived", open:"On NMB I ran onsite discovery workshops that changed what we built first.",
+   beats:["Bank came with a long feature list","We mapped current journeys with stakeholders","Found where the journey broke and who owned each step","Used that to set priorities before any UI work","Shifted me from screen designer to shaping direction"],
+   uses:"Research, workshops, stakeholders, strategy, influence without authority", fill:"Add one concrete finding that changed a decision"},
+  {t:"Multi-authorizer approvals", type:"lived", open:"The hardest flow I’ve designed was corporate approvals with several authorizers.",
+   beats:["Different roles, different rights","Two people could open the same record","Needed record lock and unlock, routing by role, full audit trail","My focus: make system state visible. Who can act, who is on it, where it is, what happened","Lesson: enterprise UX is making complex behavior easy to understand"],
+   uses:"Complex UX, corporate banking, permissions, edge cases, maker-checker", fill:""},
+  {t:"Fraud platform (ENBD task)", type:"ex", open:"For the ENBD assessment I designed a fraud workspace for analysts. It was a design exercise, not shipped.",
+   beats:["Built around the analyst’s day: alert → rank → investigate → decide → record","Split the queue from the investigation view","Risk shown with label, score and reasons, never color alone","One Figma toggle switches ENBD and Emirates Islamic themes via variables"],
+   uses:"Dashboards, data-heavy UX, cognitive load, risk, theming", fill:""},
+  {t:"ClinChoice clinical UX", type:"lived", open:"At ClinChoice I redesigned clinical-trial dashboards and mobile screens for clients like J&J and P&G.",
+   beats:["Users under time pressure with dense data","Used contextual interviews, usability tests, heuristic review","Fixed friction, not just looks","Tasks got faster and support tickets dropped"],
+   uses:"Research, testing, measurable UX, healthcare to banking", fill:"Item 4: who measured 20% / 40%"},
+  {t:"Leading 5 designers", type:"lived", open:"I lead a five-person design team at JMR.",
+   beats:["Clear ownership per designer","Weekly critiques for quality, but I don’t approve every screen","Work split by skill, difficulty, time and growth","Individual growth plans, and I sit on hiring panels"],
+   uses:"Leadership, mentoring, delegation, hiring", fill:"Add one designer you grew and how"},
+  {t:"AI in the workflow", type:"lived", open:"I use AI to move faster, not to decide for me.",
+   beats:["Research summaries, ideas, docs, coded prototypes","Tools: Claude Code, Figma MCP, coded prototypes like obdxtf.netlify.app","Always checked against users, rules, accessibility, tech limits","Brought AI steps into the team and new designers ramped up faster"],
+   uses:"AI, productivity, modern practice", fill:"Item 3: what the 30% measured"},
+  {t:"Stakeholder / deadline / mistake", type:"fill", open:"Write your own real incident here.",
+   beats:["Stakeholder: they wanted X, I suggested Y, what it was really about, how we agreed","Deadline: scope, time, what you cut, result","Mistake: what you got wrong, what it cost, what you changed so it won’t repeat"],
+   uses:"Conflict, pressure, failure, prioritizing", fill:"Items 10, 11, 12. Don’t make these up in the room"}
+];
+
+const qa = [
+ {g:"Next interviews: i-exceed, Virtusa, Gemini", items:[
+  {q:"i-exceed: How do you estimate UX work and build a schedule?", type:"lived", a:[
+   "I break the scope into journeys and screens, then size each by how complex it is: simple, medium or complex.",
+   "I add time for discovery, reviews, client feedback rounds, handoff and design QA. Those are the parts people forget.",
+   "At JMR I estimate for bank modules this way and plan my five designers against it. I flag risks early, like unclear requirements or a waiting API."],
+   fillnote:"Add one real example: a module, how many screens, how long you estimated vs how long it took."},
+  {q:"i-exceed: How do you handle client coordination?", type:"lived", a:[
+   "One clear point of contact, a fixed review rhythm, and written decisions after every call.",
+   "I show work early in low fidelity, so feedback comes before we polish.",
+   "When a client asks for a change, I show the impact on time and scope before saying yes. At JMR I do this with banks in Egypt, Tanzania and Nigeria."]},
+  {q:"i-exceed: The JD lists Adobe XD and Photoshop. You use Figma?", type:"lived", a:[
+   "My main tool today is Figma, but I’ve used Adobe tools for years, from my graphic design days.",
+   "The tool matters less than the thinking: structure, components, states and handoff work the same way. I can pick up whatever your team uses in days."]},
+  {q:"i-exceed: How do you work with developers through the full build?", type:"lived", a:[
+   "I join early to check feasibility, hand off with states and edge cases, and stay on through the build.",
+   "I review builds in the browser, log UI bugs and check different screen sizes. I build coded prototypes myself, so I understand how front-end work is done."]},
+  {q:"i-exceed: What is solution design for a banking client?", type:"lived", a:[
+   "Taking the bank’s business need and turning it into flows, structure and screens that fit the platform and the rules.",
+   "For example, a corporate approval flow: who creates, who approves, what limits apply, what the audit trail shows. That’s the multi-authorizer work I did at JMR."]},
+  {q:"Virtusa: Why a services company again, when you want product?", type:"lived", a:[
+   "The role is a Design Lead in Dubai, working close to banking clients in the region. That’s exactly where my experience fits.",
+   "I know how to deliver for clients under real limits, and I can bring design systems and team leadership on top."],
+   note:"Don’t use your “services vs product” answer here. With a services company, sell delivery."},
+  {q:"Federal Bank: What’s different about mobile banking UX?", type:"hy", a:[
+   "Short sessions and one hand, so the main tasks must be one or two taps: balance, pay, transfer, statements.",
+   "Security steps like biometrics, OTP and device binding must feel quick and clear.",
+   "Plan for weak networks: clear pending states, retries, and never a doubt about whether money moved.",
+   "In India, UPI and quick pay flows set user expectations for speed."]},
+  {q:"Gemini: Walk us through your international payment task.", type:"ex", a:[
+   "I designed an AED to INR transfer, Dubai to Bengaluru, with a co-pilot that helps along the way.",
+   "The Figma file has a flow with every branch, foundations, components and 8 key screens. I also wrote a 2-page rationale.",
+   "Key choices: show the full fee and the exchange rate before confirming, keep the co-pilot helpful without taking control, and I scoped out a few things on purpose because of the time."],
+   fillnote:"Open your Figma file and rationale before the call. Know the 8 screens by heart and the things you left out and why."},
+  {q:"Gemini: Did you use AI in the task?", type:"fill", a:[
+   "Answer truthfully in one line. They said AI-made designs won’t be considered."],
+   fillnote:"Decide your honest answer before the call. If you used AI only for research or writing, say exactly that."}
+ ]},
+ {g:"Your pitch", items:[
+  {q:"Tell me about yourself.", type:"lived", a:[
+   "I’m a Lead Product Designer with 11 years in design, most recently focused on enterprise banking.",
+   "At JMR Infotech I lead UX for Oracle OBDX banking products across retail, corporate and trade finance, for banks in MENA, Africa and APAC. I manage a team of five.",
+   "My strongest area is scaling design. I built a 200+ component multi-brand design system, and I design complex flows like multi-authorizer approvals and audit trails.",
+   "Before banking I worked on healthcare products at ClinChoice, where research and testing shaped the work.",
+   "Now I want a role that mixes hands-on design, design systems and leading a team, inside a product I can grow over time."],
+   note:"Don’t open with “I’m passionate about design.” Your edge is complexity, scale, leadership and banking depth."},
+  {q:"Why are you leaving JMR?", type:"lived", a:[
+   "I’ve grown a lot at JMR in banking, design systems and leading a team.",
+   "What I want now is to stay with one product for the long run: see how people use it after launch, learn from data and keep improving it, instead of moving project to project."]},
+  {q:"You come from a services company. Why should a product company hire you?", type:"lived", a:[
+   "The business model was services, but the problems were product problems.",
+   "I ran discovery, mapped journeys, shaped priorities, built the design system and its rules, and worked daily with engineering.",
+   "On NMB, discovery changed what we built first. That is product work.",
+   "And services taught me to deliver under real limits: platform, client, time. That makes me faster in a product team, not slower."],
+   fu:[["But weren’t you designing what the bank told you?","Requirements are input, not the answer. On NMB our discovery changed the priorities before UI started."]]},
+  {q:"Why should we hire you?", type:"lived", a:[
+   "I can work at three levels.",
+   "I solve hard UX problems myself, like multi-step approvals.",
+   "I build systems that let a team move faster, like the 200+ component design system.",
+   "And I lead designers and work across product, business and engineering.",
+   "Complex banking products need all three, and I’ve done all three."]},
+  {q:"Tell me about your biggest banking project.", type:"lived", a:[
+   "Oracle OBDX work across retail, corporate and trade finance for banks in MENA and Africa, including ADCB Egypt, NMB Tanzania and UBA Nigeria.",
+   "The hard part wasn’t the screen count. It was many user types, approval chains, responsive rules, accessibility, and keeping it all consistent through one design system.",
+   "My role: UX direction, system architecture, stakeholders and the team."],
+   note:"Then drop into the ADCB or multi-authorizer story."},
+  {q:"Why Dubai?", type:"lived", a:[
+   "The UAE has some of the most ambitious digital banking work in the region, and my MENA banking experience fits it directly.",
+   "I’m already here and ready to commit to it long term."]},
+  {q:"What is your current status here? Visa, notice period?", type:"fill", a:[
+   "“I’m in Dubai now on a [visa type]. My notice period at JMR is 30 days, and it can come down to 15.”"],
+   fillnote:"Notice is from your recruiter emails. Fill in the visa type. Your forms to Sampoorna and Virtusa say you’re in Bengaluru/India. Make every form and every answer say the same thing."},
+  {q:"What are your salary expectations?", type:"fill", a:[
+   "Dubai: “Based on the scope and my experience, I’m looking at around AED 20,000 a month. I’m open to talking about the full package.”",
+   "India: “I’m looking at around ₹35 LPA, depending on the role.”"],
+   fillnote:"These are the figures you already gave recruiters. Keep them the same everywhere. Set your lowest AED figure. UAE offers are tax-free monthly amounts, often with housing or transport on top, so ask if the number is all-in. Don’t convert your Indian CTC."},
+  {q:"I saw Crevato on your profile. What is it?", type:"fill", a:[
+   "“It’s a small design studio I set up for side projects in product design.”",
+   "Then end on commitment: “My full focus would be this role.”"],
+   fillnote:"Keep it to two lines. Don’t pitch it. Decide your honest answer to “Will you keep running it?” (item 7)."}
+ ]},
+ {g:"Design systems and Figma", items:[
+  {q:"Tell me about the design system you built.", type:"lived", a:[
+   "At JMR the same patterns showed up across many retail, corporate and trade-finance modules, and they were drifting apart.",
+   "I audited the screens, set up foundations and semantic tokens, then built components, variants and responsive patterns.",
+   "I also set rules: how a new component is proposed, reviewed, documented and retired.",
+   "It grew to 200+ components across three bank deployments, and handoff to developers got much faster.",
+   "Lesson: a design system isn’t a Figma library. Without rules and adoption, the library alone solves nothing."],
+   fu:[["How did you measure 5 days to 2?","Use your real method (item 1). If unsure, use the safe line in the Numbers section."],["Give 3 components and why they’re components.","Pick e.g. data table, approval status chip, amount input. Say: used on many screens, same behavior, needs accessible states."]]},
+  {q:"Did you build the system or only use one?", type:"lived", a:[
+   "Both, but my stronger experience is building and running one.",
+   "I set up foundations, tokens, components and the review process, and made sure designers and developers used it the same way."]},
+  {q:"What was the hardest part?", type:"lived", a:[
+   "Deciding what should be shared and what should stay specific to one journey.",
+   "Make everything a component and the system gets rigid. Too little and things drift.",
+   "I judged by how often it repeats, whether behavior is the same, accessibility needs, and whether other products will need it."]},
+  {q:"How do you stop duplicate components?", type:"lived", a:[
+   "Make existing parts easy to find with clear names.",
+   "Before anything new, ask: can a variant or property of an existing part do this?",
+   "Review new parts before they go in, and audit the library regularly."]},
+  {q:"What is a design token, in plain terms?", type:"hy", a:[
+   "A saved design decision with a name.",
+   "Instead of hard-coding a blue everywhere, components use color.action.primary.",
+   "Change the token once, and every component updates. That’s also how one component can serve many brands.",
+   "I prefer names by meaning, like color.error.text, over names by value, like red-600, because the meaning survives a theme change."]},
+  {q:"Token vs Figma variable?", type:"hy", a:[
+   "A token is the design-system idea: a named decision.",
+   "A Figma variable is one way to store that decision inside Figma. Code can store the same token another way."],
+   note:"TIAA gap: learn Tokens Studio (the plugin) before your next design-system interview."},
+  {q:"How do you handle several banking brands?", type:"lived", a:[
+   "Keep structure and behavior shared. Put brand values like color, surfaces and sometimes type into semantic variables with a mode per brand.",
+   "One component, many banks, nothing duplicated.",
+   "In the ENBD task, one toggle switched between ENBD and Emirates Islamic."]},
+  {q:"How do you govern a design system?", type:"lived", a:[
+   "Six things: who owns it, how someone asks for a change, who approves, how releases are announced, where the docs live, and how old parts are retired.",
+   "Retiring is the one teams forget, and it’s why libraries rot."]},
+  {q:"How do you version a design system?", type:"hy", a:[
+   "Major for breaking changes, minor for new parts, patch for fixes. For example 2.0 new structure, 2.1 new table, 2.1.1 contrast fix.",
+   "Each release has notes, a list of retired parts, and steps to move over. Before a breaking change I warn designers and developers."]},
+  {q:"How do you decide what becomes a component?", type:"hy", a:[
+   "It repeats often, looks and behaves the same, and has states that need to be right every time.",
+   "A one-off visual doesn’t earn a component."]},
+  {q:"Design system vs component library?", type:"hy", a:[
+   "The library is the parts. The system is the parts plus foundations, tokens, patterns, guidelines, accessibility, docs and the rules for changing it."]},
+  {q:"How do you organize a large Figma file?", type:"lived", a:[
+   "Cover and docs, foundations, components, patterns, flows, screens, prototype, handoff.",
+   "Names follow one pattern, like Button / Primary / Hover.",
+   "Test: someone new should understand the file in a few minutes."]},
+  {q:"What does a developer-ready Figma file include?", type:"lived", a:[
+   "Real components, variables and styles, clear names, every state, responsive behavior, error and empty states, edge cases, a prototype where behavior matters, and notes on accessibility.",
+   "Good handoff removes guesswork. It isn’t just exported screens."]}
+ ]},
+ {g:"Banking UX", items:[
+  {q:"What is different about banking UX?", type:"lived", a:[
+   "Mistakes cost more. It’s money, security, rules and trust.",
+   "So I put more weight on confirmation, preventing errors, clear status, authentication, audit trails and recovery."]},
+  {q:"What’s the most complex banking flow you’ve designed?", type:"lived", a:[
+   "Corporate approvals with several authorizers.",
+   "Different roles, two people able to open the same record, lock and unlock, routing by role, and a full audit trail.",
+   "My job was to make the system state visible: what can I do, is someone else on it, where is it in the chain, what happened before.",
+   "Enterprise UX is often about making complex behavior easy to understand, not just cutting screens."]},
+  {q:"Explain maker-checker.", type:"lived", a:[
+   "A maker creates a transaction, a checker approves or rejects it.",
+   "The screen must show status, who owns it, who can act, approval history and the audit trail.",
+   "Users should never have to remember where a transaction is."]},
+  {q:"Retail vs corporate banking UX?", type:"lived", a:[
+   "Retail is one person managing their own money.",
+   "Corporate is many roles, rights, approval chains and lots of data.",
+   "Corporate needs role visibility, approval states, delegation, audit, bulk actions, strong filters and dense tables. It’s a different mental model, not retail with more buttons."]},
+  {q:"Design a fund transfer.", type:"hy", a:[
+   "Choose transfer → pick beneficiary → amount → review → authenticate → processing → success with reference number.",
+   "Must show: who you’re paying and their account, fees, limits, transfer type, and clear status at every step."]},
+  {q:"The transfer failed but money was taken. What does the screen say?", type:"hy", a:[
+   "Never just “Transaction failed.”",
+   "Say what happened, whether money left the account, whether it’s pending, when it will return (often a few working days after reconciliation), what to do now, and where to track it.",
+   "In money, not knowing hurts more than the error itself."]},
+  {q:"How much can you really change on Oracle OBDX?", type:"lived", a:[
+   "It isn’t a blank canvas, so I sort things into three buckets: what the platform supports, what can be configured, and what needs engineering work.",
+   "If a limit doesn’t hurt the user’s task, I work within it.",
+   "If it does, I take it to engineering and product and look for another way to protect the outcome.",
+   "I don’t ignore limits, and I don’t let them decide the UX by default."],
+   note:"One of your strongest answers. Keep it."},
+  {q:"Have you designed Arabic / RTL banking products?", type:"fill", a:[
+   "If yes: “Yes. On [project] I [what you did], and one thing we had to solve was [detail].”",
+   "If no: “My MENA work didn’t include a full Arabic build. Here’s how I’d set it up.” Then give the next answer."],
+   fillnote:"Item 6. Pick one version and say it with no apology. Don’t say “I don’t want to overstate…”"},
+  {q:"How would you set up RTL in a design system?", type:"hy", a:[
+   "Build it into the system, not fix it screen by screen.",
+   "Use start and end instead of left and right in spacing and layout, so layouts flip on their own.",
+   "Flip direction icons like back arrows. Don’t flip icons with fixed meaning, like a clock, play button or checkmark.",
+   "Pair an Arabic typeface that matches the Latin one in weight and height, and allow for longer or shorter text.",
+   "Plan for mixed text, like an English IBAN inside Arabic, and decide on Western or Arabic-Indic numerals.",
+   "Test in both languages, because mixed screens show bugs single-language reviews miss."]},
+  {q:"KYC from a UX view?", type:"hy", a:[
+   "Know Your Customer: collecting ID the bank must have.",
+   "Explain why each item is needed, ask for it step by step, allow save and resume, check inputs early, and show verification status clearly."]},
+  {q:"Strong customer authentication (SCA / 2FA)?", type:"hy", a:[
+   "An extra check before sensitive actions.",
+   "The user should know why it’s asked, what to do, whether it worked, and what happens if it fails, without losing their place."]},
+  {q:"PCI and consent?", type:"hy", a:[
+   "PCI protects card data: mask card numbers, show only what’s needed, keep sensitive steps secure.",
+   "Consent should be clear and in context: what you agree to, why, and how to change it later. No hiding it in legal text."]},
+  {q:"How do you approach accessibility?", type:"lived", a:[
+   "From the start, not as a final check.",
+   "Contrast, keyboard, focus states, labels, error messages, touch targets and screen-reader behavior.",
+   "I build it into components so screens are accessible by default. On our banking work we built to WCAG 2.1 AA across 150+ screens."],
+   fillnote:"Only say “98%” if you can name how it was checked (item 2)."},
+  {q:"How do you design responsive banking screens?", type:"lived", a:[
+   "I don’t shrink desktop. I keep the user’s task and change the layout around it.",
+   "Desktop: more visible, dense tables, many columns. Mobile: one main task, key info first, bottom actions, bigger touch targets, details on demand."]}
+ ]},
+ {g:"Fraud platform (ENBD task)", items:[
+  {q:"Tell me about the fraud platform you designed.", type:"ex", a:[
+   "It was an ENBD design exercise, not a shipped product.",
+   "I built it around the analyst’s day: alert comes in, rank it, investigate, weigh evidence, decide, act, record.",
+   "My main goal was less mental load, so analysts don’t hop across screens to understand why an alert fired.",
+   "I also showed scale: reusable components and one toggle between the ENBD and Emirates Islamic themes."],
+   fu:[["Did it go live?","No. It was an assessment. I keep that separate from my production banking work."]]},
+  {q:"How do you design an analyst workspace?", type:"ex", a:[
+   "Two views. The queue is for fast triage: severity, score, age, amount, customer.",
+   "The investigation view brings together customer, account, transaction history, device and channel, suspicious signals and past cases."]},
+  {q:"How do you reduce alert fatigue?", type:"ex", a:[
+   "Don’t treat all alerts the same. Rank by risk and urgency, and show why each one matters.",
+   "Let analysts group and filter by what’s meaningful.",
+   "Track time per case, false positives and backlog to see where the process makes extra work."],
+   note:"Words a real fraud team uses: false-positive rate, case queue, L1/L2 analysts, SLA per alert, backlog. Don’t invent real numbers."},
+  {q:"How do you show risk?", type:"ex", a:[
+   "Never color alone. Show a label, a score and the reasons.",
+   "For example “High risk · 87 · new device, unusual location, large transfer.” That tells the analyst what to check."]}
+ ]},
+ {g:"Research and product thinking", items:[
+  {q:"When did research change a project’s direction?", type:"lived", a:[
+   "On NMB in Tanzania I ran onsite discovery with stakeholders.",
+   "Instead of turning the requirement list into screens, we mapped current journeys and found where they broke.",
+   "That changed priorities before UI began. Discovery can move the roadmap, not just the visuals."],
+   fillnote:"Add one concrete thing you found and the decision it changed."},
+  {q:"What research methods do you use?", type:"lived", a:[
+   "Contextual interviews, usability tests, card sorting, journey maps, service blueprints and heuristic reviews.",
+   "I pick the method by the decision I need to make."]},
+  {q:"How do you run a stakeholder workshop?", type:"lived", a:[
+   "Start with the decision the session must produce.",
+   "Walk through current state, pain points, goals and limits. Don’t let it become a wish list.",
+   "End with written decisions, open questions and owners."]},
+  {q:"Stakeholders disagree in the workshop. What do you do?", type:"lived", a:[
+   "Separate facts, guesses and preferences.",
+   "If it’s about what users need, note the guess and what evidence would settle it.",
+   "If it’s a business priority, make the trade-off visible. Design alone can’t settle that."]},
+  {q:"A feature has low use. What do you do?", type:"hy", a:[
+   "Check the data first. Then find where people drop off, read feedback, and watch people try it.",
+   "Is it hard to find, hard to use, broken, or not needed? Only then choose: redesign, move, explain or remove."]},
+  {q:"Checkout conversion suddenly drops. What do you check?", type:"hy", a:[
+   "Find the exact step where people leave.",
+   "Check error rates, devices and browsers, payment failures, and what was released recently. Then confirm with a quick usability test."]},
+  {q:"How do you measure UX success?", type:"hy", a:[
+   "No single metric. First agree the user and business outcome, then pick the measure: task success, time on task, errors, conversion, support contacts, adoption."]},
+  {q:"How do you prioritize features?", type:"hy", a:[
+   "User impact, business value, how often it’s used, risk, effort and dependencies.",
+   "Not whoever is most senior in the room."]}
+ ]},
+ {g:"Leadership (and Federal Bank)", items:[
+  {q:"How do you manage five designers?", type:"lived", a:[
+   "Clear ownership, so each person knows their scope, priority and deadline.",
+   "Regular critiques for quality, but I don’t approve every screen. I don’t want to be the bottleneck.",
+   "Growth plans for each person, because leading is also raising the team’s level."],
+   fillnote:"Add one example of a designer you helped grow."},
+  {q:"How do you split work?", type:"lived", a:[
+   "By skill, difficulty, availability, continuity and growth.",
+   "I don’t give all hard work to the seniors. That stops the others growing."]},
+  {q:"A designer is underperforming. What do you do?", type:"hy", a:[
+   "Pin down what exactly: quality, speed, ownership or communication.",
+   "Find the cause: skill, unclear expectations, workload or something else.",
+   "Set clear, measurable goals, support them, review progress. If nothing changes, follow the formal process."]},
+  {q:"Two designers disagree. What do you do?", type:"lived", a:[
+   "Ask each to explain the problem they’re solving and why.",
+   "Bring it back to users, goals and evidence. If both work, test both.",
+   "Rank and volume don’t decide it."]},
+  {q:"Why a lead designer instead of two mid-level designers?", type:"hy", a:[
+   "A lead isn’t extra hands. A lead sets direction and standards, mentors, cuts rework and lines design up with product and engineering.",
+   "The value is making the whole team better, not more screens."]},
+  {q:"First 30 days?", type:"hy", a:[
+   "Days 1–10: learn the people, products and process.",
+   "Days 11–20: find gaps in UX, the system and how teams work together.",
+   "Days 21–30: pick quick wins and agree a roadmap. No big process change before I understand the place."]},
+  {q:"How would you reduce dependency on UX vendors?", type:"hy", a:[
+   "I wouldn’t start by removing the vendor.",
+   "First map where we depend on them: execution, research, system knowledge, domain or capacity.",
+   "Then move knowledge inside through docs, mentoring, shared processes and ownership.",
+   "Goal: key knowledge stays with the bank even if the vendor changes."],
+   note:"Federal Bank asked this. You can add: “At JMR I’m on the vendor side, so I know exactly where that knowledge gets stuck.”"},
+  {q:"Management won’t create a new UX team. Now what?", type:"hy", a:[
+   "Start with the people we have: skills, capacity, workload.",
+   "Close some gaps by shifting work, mentoring and upskilling.",
+   "If a real capacity gap remains, show it with workload and delivery risk, not opinion."]},
+  {q:"How would you ask HR for more designers?", type:"hy", a:[
+   "Not “I need two designers.”",
+   "Instead: “We have 120 hours of committed design work this month and 80 hours of capacity. That 40-hour gap puts the release at risk.”",
+   "Then say what’s affected, the timeline, the skills needed, and whether it’s temporary or permanent."]},
+  {q:"How do you work with product, engineering, business and management?", type:"lived", a:[
+   "Product: agree user and business outcomes. Business: clarify needs and limits. Engineering: talk feasibility, states and edge cases early. QA: check it’s built as intended. Management: progress, risks and trade-offs.",
+   "A lead designer often connects these groups so decisions don’t get stuck in one team."]}
+ ]},
+ {g:"Stakeholders and hard moments", items:[
+  {q:"A senior stakeholder says “I don’t like this.”", type:"lived", a:[
+   "Ask what exactly isn’t working, and whether it’s about business, users, tech or taste.",
+   "If it’s real, I change the design. If it’s taste, I bring it back to users, goals and evidence.",
+   "My job isn’t to protect my design. It’s to get the right result."]},
+  {q:"Engineering says it can’t be built.", type:"lived", a:[
+   "Find out which part is hard and why.",
+   "Separate the user outcome from my exact UI, and find another way to reach the same outcome.",
+   "If the change really hurts the experience, bring product in instead of quietly accepting it."]},
+  {q:"Late change requests near launch?", type:"lived", a:[
+   "Understand why, then size the impact on users, engineering and timeline.",
+   "Critical goes in. Nice-to-have goes to the next release. I make the trade-off visible rather than just yes or no."]},
+  {q:"Business wants 20 features, time allows 8.", type:"lived", a:[
+   "Help prioritize instead of asking the team to work faster.",
+   "Sort into must-have, high value, nice-to-have and later. Protect the core journey and agree the cut with product and business."]},
+  {q:"What does proactive communication mean to you?", type:"lived", a:[
+   "Raise problems before they block anyone.",
+   "Unclear requirement? Ask now, not when the design is done. A dependency that threatens the date? Say it early.",
+   "A lead designer reduces surprises."]},
+  {q:"Tell me about a difficult stakeholder.", type:"fill", a:[
+   "“The stakeholder wanted [X]. I suggested [Y]. It was really about [time / tech / business goal].",
+   "I asked what outcome they needed, then used [evidence] to guide the talk.",
+   "We agreed on [decision]. I learned [lesson].”"],
+   fillnote:"Item 10. Use a real case from NMB, ADCB or UBA. Never make the other person sound silly."},
+  {q:"Tell me about a real mistake.", type:"fill", a:[
+   "Situation → what I got wrong → what it cost (time, rework, delay) → how I fixed it → what I changed so it won’t happen again."],
+   fillnote:"Item 11. “I polished before validating” is too safe. Pick something with a real cost."},
+  {q:"Tell me about a tight deadline.", type:"fill", a:[
+   "“We had [scope] in [time]. I split critical from non-critical, gave ownership by complexity, agreed trade-offs with product and engineering, protected the core flows and moved the rest. Result: [X].”"],
+   fillnote:"Item 12. Real project, real numbers."},
+  {q:"If we gave you our app, what would you change?", type:"hy", a:[
+   "I wouldn’t judge it fully without your data.",
+   "I’d look at journeys, drop-offs, usability, accessibility and system consistency.",
+   "From the public app, one thing I noticed is [one specific, polite observation]. That’s a guess I’d want to check with your data."],
+   note:"Open their app the night before and pick one real point. Shows you prepared and have a spine."}
+ ]},
+ {g:"AI", items:[
+  {q:"How do you use AI in your design work?", type:"lived", a:[
+   "For research summaries, ideas, content, docs, and coded prototypes. I use Claude Code and Figma MCP.",
+   "It gives me speed and more options. It doesn’t give me decisions.",
+   "I check every output against users, business needs, accessibility and tech limits.",
+   "I brought AI steps into the team, and new designers ramped up noticeably faster."],
+   fillnote:"Say “30%” only if you can explain what was measured (item 3)."},
+  {q:"What if AI gives you a wrong UX answer?", type:"lived", a:[
+   "That’s why I treat it as a helper, not an authority. In banking, security, rules, money and trust still need human judgment."]},
+  {q:"Will AI replace designers?", type:"hy", a:[
+   "It speeds up making things. It doesn’t choose the right problem, read the organization, or own trade-offs. It makes good designers stronger."]}
+ ]},
+ {g:"Background", items:[
+  {q:"How did healthcare shape how you design?", type:"lived", a:[
+   "Clinical users work under pressure with complex data, so clarity and accuracy matter.",
+   "I used interviews, testing and heuristic reviews to find friction. That carries straight into banking, where mistakes also have real cost."]},
+  {q:"Why did you move from graphic design to UX?", type:"lived", a:[
+   "Graphic design gave me type, layout, hierarchy and brand.",
+   "I wanted to move from how it looks to why it works. UX let me join visual craft with research and problem solving, and both show up in my work today."]}
+ ]}
+];
+
+const rapid = [
+ ["UI vs UX","UI is what you see and touch. UX is the whole experience of reaching your goal."],
+ ["User flow vs journey map","A flow is the steps in one task. A journey map is the wider experience across touchpoints."],
+ ["Wireframe vs prototype","A wireframe shows structure. A prototype shows behavior."],
+ ["Information architecture","How content is grouped, labeled and found."],
+ ["Progressive disclosure","Show what’s needed now, reveal detail when asked."],
+ ["Cognitive load","The mental effort needed to use something."],
+ ["Qualitative vs quantitative","Qualitative explains why. Quantitative shows what and how much."],
+ ["Heuristic evaluation","Experts check a product against known usability rules."],
+ ["Fitts’s Law","Bigger, closer targets are faster to hit."],
+ ["Hick’s Law","More choices, slower decisions."],
+ ["Jakob’s Law","People expect your product to work like the ones they already use."],
+ ["Design token","A named, reusable design decision, like color.action.primary."],
+ ["Component vs variant","A component is a reusable part. Variants are its states or versions."],
+ ["Auto layout","Frames that resize with content, so components behave like real UI."],
+ ["Design system vs UI kit","A UI kit is parts. A system adds rules, docs, governance and upkeep."],
+ ["Measuring design-system success","Adoption, fewer one-off parts, faster handoff, fewer UI bugs, consistency."],
+ ["WCAG","Web accessibility guidelines. AA is the usual target: e.g. 4.5:1 contrast for body text."],
+ ["Responsive vs adaptive","Responsive flows to any size. Adaptive uses set layouts per breakpoint."],
+ ["MVP","The smallest version that tests your riskiest guess."],
+ ["A/B test","Compare two versions against one metric."],
+ ["Design thinking","Understand, define, ideate, prototype, test."],
+ ["Double Diamond","Discover, define, develop, deliver. Open up, then narrow, twice."],
+ ["Good dashboard","Answers the user’s next question fast. Summary first, detail on demand."],
+ ["Good product designer","Picks the right problem, designs a clear answer, and proves it worked."]
+];
+
+const esc = s => s.replace(/&/g,"&amp;").replace(/</g,"&lt;");
+const chev = '<svg class="chev" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M7 4l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+const tag = t => `<span class="tag ${T[t][0]}">${T[t][1]}</span>`;
+
+document.getElementById("cos").innerHTML = companies.map(c=>`
+ <div class="co"><div class="co-top"><h3>${esc(c.n)}</h3><span class="stat ${c.s[0]}">${c.s[1]}</span></div>
+ <span class="role">${esc(c.r)}</span><ul>${c.p.map(x=>`<li>${esc(x)}</li>`).join("")}</ul></div>`).join("");
+
+document.getElementById("storyList").innerHTML = stories.map((s,i)=>`
+ <div class="story"><div class="story-top"><h3>${i+1}. ${esc(s.t)}</h3>${tag(s.type)}</div>
+ <p class="opener">“${esc(s.open)}”</p>
+ <ul class="beats">${s.beats.map(b=>`<li>${esc(b)}</li>`).join("")}</ul>
+ <p class="uses"><b>Use for:</b> ${esc(s.uses)}</p>
+ ${s.fill?`<p class="fillnote"><b>Add:</b> ${esc(s.fill)}</p>`:""}</div>`).join("");
+
+let store = {};
+try{ store = JSON.parse(localStorage.getItem("mk-prep-done")||"{}"); }catch(e){ store = {}; }
+const save = ()=>{ try{ localStorage.setItem("mk-prep-done", JSON.stringify(store)); }catch(e){} };
+
+let n = 0;
+document.getElementById("qaList").innerHTML = qa.map(g=>`
+ <div class="group" data-group><div class="group-title">${esc(g.g)}</div>
+ ${g.items.map(it=>{ const id="q"+(++n); return `
+ <details class="q${store[id]?" is-done":""}" data-id="${id}">
+  <summary>${chev}<span class="qtext">${esc(it.q)}</span></summary>
+  <div class="qbody">
+   <div class="meta">${tag(it.type)}</div>
+   <div class="ans">${it.a.map(p=>`<p>${esc(p)}</p>`).join("")}</div>
+   ${it.fillnote?`<p class="fillnote"><b>Your facts:</b> ${esc(it.fillnote)}</p>`:""}
+   ${it.note?`<p class="note">${esc(it.note)}</p>`:""}
+   ${it.fu?`<div class="fu">${it.fu.map(f=>`<span><b>Follow-up: ${esc(f[0])}</b><br>${esc(f[1])}</span>`).join("")}</div>`:""}
+   <label class="done-row"><input type="checkbox" id="c-${id}" ${store[id]?"checked":""}> I can say this without notes</label>
+  </div>
+ </details>`}).join("")}</div>`).join("");
+
+document.getElementById("rapidList").innerHTML = rapid.map(r=>`
+ <details class="q"><summary>${chev}<span class="qtext">${esc(r[0])}</span></summary>
+ <div class="qbody"><div class="ans"><p>${esc(r[1])}</p></div></div></details>`).join("");
+
+document.getElementById("qaList").addEventListener("change", e=>{
+  if(e.target.type!=="checkbox") return;
+  const d = e.target.closest("details"); const id = d.dataset.id;
+  if(e.target.checked){ store[id]=1; d.classList.add("is-done"); } else { delete store[id]; d.classList.remove("is-done"); }
+  save();
+});
+
+const search = document.getElementById("search");
+search.addEventListener("input", ()=>{
+  const v = search.value.trim().toLowerCase();
+  let any = false;
+  document.querySelectorAll("#qaList .group").forEach(g=>{
+    let shown = 0;
+    g.querySelectorAll("details").forEach(d=>{
+      const hit = !v || d.textContent.toLowerCase().includes(v);
+      d.classList.toggle("hide", !hit); if(hit) shown++;
+      if(v && hit) d.open = true; if(!v) d.open = false;
+    });
+    g.classList.toggle("hide", shown===0); if(shown) any = true;
+  });
+  document.getElementById("empty").style.display = any ? "none" : "block";
+  if(v) document.getElementById("qa").scrollIntoView({block:"start"});
+});
+</script>
+</body>
+</html>
