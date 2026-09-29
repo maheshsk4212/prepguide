@@ -544,6 +544,7 @@ footer{padding-top:40px;color:var(--muted);font-size:13px}
     <div class="rule"><b>Lead with craft</b><p>Talk about flows, screens, micro-states and data-dense layouts. Not team size or governance.</p></div>
     <div class="rule"><b>Respect their system</b><p>“I’d work inside FAB’s system first, and propose new parts only where there’s a real gap.”</p></div>
     <div class="rule"><b>Say native, often</b><p>iOS and Android conventions, not “responsive web”. This is their must-have.</p></div>
+    <div class="rule"><b>HR hint</b><p>Expect “HIG vs Material for banking” and “your process for a new feature”. Both are the first two questions in the Q&amp;A below.</p></div>
     <div class="rule"><b>Use UAE context</b><p>Arabic/RTL, UAE Pass, Emirates ID, AED formats. You’re in Dubai. Say so.</p></div>
   </div>
   <div class="say">
@@ -1256,6 +1257,37 @@ const gl = [
 
 
 const fab = [
+ {g:"HR hint · expect these two", items:[
+  {q:"How do you diverge between Apple’s Human Interface Guidelines and Android Material Design for a banking use case?", type:"lived", a:[
+   "My rule: one brand and one design system, but native behavior on each platform. Customers should feel at home on their own phone.",
+   "What stays the same on both: brand, tokens, the flow order, the content, fees and legal text, and every security step. Compliance approves one flow, so the rules don’t change by platform.",
+   "What I adapt: navigation, back behavior, system dialogs, pickers, sheets, keyboards, biometrics prompts, fonts and touch sizes.",
+   "Banking example, back in the middle of a transfer. On iOS people swipe back. On Android they press the system back button or use the back gesture. On both, I stop them losing what they typed with a “Discard this transfer?” check. On Android that’s a Material dialog, on iOS a native alert.",
+   "Second example, biometric login. iOS says “Log in with Face ID” and uses Apple’s Face ID prompt. Android uses its own biometric prompt and says “Use fingerprint”. Both fall back to PIN.",
+   "Third, screen privacy. Android can block screenshots on sensitive screens. iOS can’t, so we blur the app in the app switcher and hide balances instead."],
+   code:"KEEP THE SAME (both)              ADAPT PER PLATFORM\n-------------------------------   ------------------------------------------\nBrand, tokens, colors             iOS: tab bar, large titles, swipe back\nFlow order and steps              Android: bottom nav, top app bar, system back\nFees, rates, legal text           iOS alert/action sheet vs Material dialog/bottom sheet\nSecurity and OTP steps            Date pickers: iOS inline/wheel vs Material date range\nConfirmation + receipt content    Biometrics: Face ID/Touch ID vs Android biometric prompt\nComponent logic and states        OTP autofill: iOS keyboard suggestion vs Android SMS consent\n                                  Fonts: SF Pro vs Roboto (or brand font)\n                                  Targets: 44pt vs 48dp · Share sheet · Haptics\n                                  Wallet: official Apple Pay / Google Wallet buttons",
+   fu:[["Where would you NOT follow the platform?","Where it would change the meaning or the rules. Fee disclosure, confirmation content, and security steps stay identical. And brand color and type stay ours, not system blue."],
+       ["Amount entry on each platform?","Numeric keypad on both. iOS’s decimal pad has no Done key, so add a toolbar or a clear Continue button. Android can use the keyboard’s Next or Done action. Format AED as the user types, with 2 decimals."],
+       ["Large text?","Support Dynamic Type on iOS and font scaling on Android. Amounts must never cut off, so test at the largest sizes and let rows wrap."],
+       ["Arabic?","Both platforms mirror standard layouts in RTL, but custom components need checking. Direction icons flip, a clock or a play icon doesn’t."]],
+   note:"Keep the spoken answer to about 90 seconds: the rule, then the back-button example, then biometrics. Use the table only if they ask for more."},
+  {q:"What process do you follow to design a new feature, end to end?", type:"lived", a:[
+   "1. Understand. With the product manager: the business goal, who it’s for, how we’ll measure success, plus compliance rules and API or tech limits.",
+   "2. Discover. Look at data, support tickets, what other UAE banking apps do, and talk to a few users if time allows.",
+   "3. Define. A clear problem statement, user stories, and the happy path plus edge cases.",
+   "4. Flow. The user flow with every branch, then quick low-fidelity wireframes.",
+   "5. Review early with engineering and compliance, before any polish. That’s where most rework is avoided.",
+   "6. High fidelity inside the design system. Existing components first, and a proposal only for a real gap. I cover every micro-state, iOS and Android differences, Arabic, and accessibility.",
+   "7. Prototype and test with about 5 users on a real phone, then fix and retest.",
+   "8. Handoff: specs, states, edge cases, acceptance criteria and analytics events.",
+   "9. Support the build: answer questions in the sprint, review builds on a device, design QA before release.",
+   "10. Launch and measure: completion rate, drop-offs, errors and support tickets, then improve."],
+   code:"Understand → Discover → Define → Flow + wireframes\n→ Early review (eng + compliance) → Hi-fi in design system\n→ Prototype + test → Handoff → Build support + QA → Measure",
+   fillnote:"End with one real feature you took through these steps, for example a transfer or approval flow at JMR. Say one thing testing changed. Your Gemini AED → INR task is a good backup, but call it a design task.",
+   fu:[["How does this fit a two-week sprint?","I work one sprint ahead. Discovery and flows happen the sprint before, so the design is reviewed and ready at sprint planning."],
+       ["What if there’s no time for research?","Use what exists: data, support tickets, past tests. Then test the prototype with even 3 people. A quick test beats none."]],
+   note:"Say the steps as a story, not a list. Short version: understand, define, flow, early review, design in the system, test, hand off, support the build, measure."}
+ ]},
  {g:"Opening", items:[
   {q:"Tell me about yourself.", type:"lived", a:[
    "I’m a product designer with 11 years in design, most of it recent in banking and fintech.",
