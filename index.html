@@ -50,6 +50,7 @@ p{margin:0}
 .nav-in{max-width:760px;margin:0 auto;padding-inline:16px;padding-block:10px;display:flex;flex-direction:column;gap:8px}
 .chips{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}
 .chips::-webkit-scrollbar{display:none}
+.chips[hidden],.view[hidden]{display:none!important}
 .chips a{flex:0 0 auto;text-decoration:none;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:6px 12px;font-size:14px;font-weight:500;white-space:nowrap}
 .chips a:hover,.chips a:focus-visible{border-color:var(--accent);color:var(--accent);outline:none}
 .search{width:100%;font:inherit;font-size:15px;padding:9px 12px;border-radius:10px;border:1px solid var(--line);background:var(--surface);color:var(--ink)}
@@ -148,6 +149,26 @@ td.num{font-family:var(--display);font-weight:700;font-size:16px;white-space:now
 .fill-list li{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--warn);border-radius:10px;padding:10px 12px;font-size:15px;display:flex;gap:10px}
 .fill-list li::before{counter-increment:f;content:counter(f);font:600 14px var(--mono);color:var(--warn);min-width:20px}
 
+.tabs{display:grid;grid-template-columns:1fr 1fr;gap:4px;background:var(--sunk);padding:4px;border-radius:12px}
+.tabs button{font:600 15px/1.2 var(--body);color:var(--muted);background:transparent;border:0;border-radius:9px;padding:9px 8px;cursor:pointer;display:flex;flex-wrap:wrap;justify-content:center;align-items:baseline;gap:6px}
+.tabs button[aria-selected="true"]{background:var(--surface);color:var(--ink);box-shadow:0 1px 2px rgba(0,0,0,.08)}
+.tabs button:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+.tab-when{font:500 11px var(--mono);color:var(--accent);letter-spacing:.03em}
+.callout{background:var(--accent-soft);border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:6px}
+.callout p{font-size:16px}
+.callout.warn{background:var(--warn-soft)}
+.callout.warn b{color:var(--warn)}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+.fact{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;display:flex;flex-direction:column;gap:2px}
+.fact b{font-family:var(--display);font-size:17px}
+.fact span{font-size:14px;color:var(--muted)}
+pre.code{margin:0;background:var(--sunk);border-radius:8px;padding:10px 12px;font:500 13px/1.55 var(--mono);overflow-x:auto;white-space:pre;color:var(--ink)}
+.fit-gap{color:var(--warn);font-weight:600}
+.fit-ok{color:var(--accent);font-weight:600}
+.ten{counter-reset:t;display:grid;gap:8px;margin:0;padding:0;list-style:none}
+.ten li{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 12px;display:flex;gap:10px;font-size:15px}
+.ten li::before{counter-increment:t;content:counter(t);font:600 14px var(--mono);color:var(--accent);min-width:20px}
+.ten b{font-weight:600}
 .empty{display:none;color:var(--muted);font-size:15px;padding:10px 0}
 .hide{display:none!important}
 footer{padding-top:40px;color:var(--muted);font-size:13px}
@@ -158,7 +179,18 @@ footer{padding-top:40px;color:var(--muted);font-size:13px}
 <body>
 <nav class="nav" aria-label="Sections">
   <div class="nav-in">
-    <div class="chips">
+    <div class="tabs" role="tablist" aria-label="Guides">
+      <button type="button" role="tab" id="tab-main" aria-controls="view-main" aria-selected="true">All interviews</button>
+      <button type="button" role="tab" id="tab-gl" aria-controls="view-gl" aria-selected="false">GlobalLogic <span class="tab-when">Wed 11:00</span></button>
+    </div>
+    <div class="chips" id="chipsGL" hidden>
+      <a href="#gl-top">Before the call</a>
+      <a href="#gl-fit">Your fit</a>
+      <a href="#gl-10">10 to remember</a>
+      <a href="#gl-qa">Q&amp;A</a>
+      <a href="#gl-ask">Ask them</a>
+    </div>
+    <div class="chips" id="chipsMain">
       <a href="#today">Taxi sheet</a>
       <a href="#interviews">Interviews</a>
       <a href="#fill">Fill in</a>
@@ -174,7 +206,7 @@ footer{padding-top:40px;color:var(--muted);font-size:13px}
   </div>
 </nav>
 
-<div class="wrap">
+<div class="wrap view" id="view-main" role="tabpanel" aria-labelledby="tab-main">
 <header class="hero">
   <span class="label">Lead Product Designer · Banking · GCC</span>
   <h1>Interview Playbook</h1>
@@ -363,13 +395,121 @@ footer{padding-top:40px;color:var(--muted);font-size:13px}
   </div>
 </section>
 
-<footer>Built from prep drafts v1–v4, your interview notes, the ENBD, Backbase and Federal Bank briefs, and your Gmail (checked 28 Sep 2026). Ticks are saved on this device only.</footer>
+<footer>Built from prep drafts v1–v4, your interview notes, the ENBD, Backbase and Federal Bank briefs, and your Gmail (checked 29 Sep 2026). Ticks are saved on this device only.</footer>
+</div>
+
+<div class="wrap view" id="view-gl" role="tabpanel" aria-labelledby="tab-gl" hidden>
+<header class="hero" id="gl-top">
+  <span class="label">GlobalLogic · IRC300811 · Product Design &amp; UX group</span>
+  <h1>Design Systems &amp; Operations Lead</h1>
+  <p>Answer as a design systems and design operations leader, not as a screen designer. The job is to build the setup that lets many teams design and ship well: tokens, components, rules, Figma-to-code, accessibility, docs and automation.</p>
+</header>
+
+<section style="padding-top:18px">
+  <div class="facts">
+    <div class="fact"><span class="label">When</span><b>Wed 30 Sep, 11:00–11:30</b><span>India time (IST). Moved from Tue 5:30 pm.</span></div>
+    <div class="fact"><span class="label">Where</span><b>Google Meet</b><span>Link is in Poonam Lohani’s calendar invite</span></div>
+    <div class="fact"><span class="label">Round</span><b>L1 · 30 minutes</b><span>Keep every answer to about 60 seconds</span></div>
+    <div class="fact"><span class="label">Location</span><b>Hybrid</b><span>Noida, Pune, Bangalore or Hyderabad</span></div>
+  </div>
+  <div class="callout warn">
+    <p><b>Do today:</b> fill in the Export Compliance form from GlobalLogic’s 28 Sep email. It’s required, and the link works for 7 days.</p>
+    <p><b>Join 5 minutes early.</b> On Tuesday you joined and nobody came. If it happens again, message Poonam after 5 minutes.</p>
+  </div>
+  <div class="callout">
+    <span class="label">If you forget everything, say this</span>
+    <p>“My job as a Design Systems and Operations Lead is to make sure designers and engineers don’t keep solving the same problems. I do that with a clear token setup, reusable components, simple rules for contributing, a solid Figma-to-code flow, accessibility built in, good docs, automation, and numbers that show adoption.”</p>
+  </div>
+  <div class="tbl">
+    <table>
+      <thead><tr><th>30-minute plan</th><th>What to do</th></tr></thead>
+      <tbody>
+        <tr><td class="num">0–3</td><td>Tell me about yourself. 60–90 seconds, no company-by-company tour.</td></tr>
+        <tr><td class="num">3–25</td><td>Their questions. Short answers, one example each. Stop and let them ask more.</td></tr>
+        <tr><td class="num">25–30</td><td>Your 2–3 questions. Start with “How mature is your design system today?”</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section id="gl-fit">
+  <div class="sec-head">
+    <span class="label">Job description vs your proof</span>
+    <h2>Where you fit, and the two gaps</h2>
+    <p>These come from the job description in the invite. Read the gaps first.</p>
+  </div>
+  <div class="tbl">
+    <table>
+      <thead><tr><th>They want</th><th>Your proof</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td>10+ years in design systems or DesignOps, enterprise SaaS</td><td>11 years in design. 200+ component multi-brand system across 3 bank deployments on Oracle OBDX</td><td class="fit-ok">Strong</td></tr>
+        <tr><td>Figma variables, tokens, advanced auto layout, libraries</td><td>Semantic tokens, variables with brand modes, the ENBD / Emirates Islamic one-toggle theme</td><td class="fit-ok">Strong</td></tr>
+        <tr><td>Governance, contribution, docs used by many teams</td><td>You run the system’s rules, docs, versions and design QA at JMR</td><td class="fit-ok">Strong</td></tr>
+        <tr><td>WCAG built in at token, component, pattern level</td><td>Accessibility built into the foundations, 150+ screens to WCAG 2.1 AA</td><td class="fit-ok">Strong</td></tr>
+        <tr><td>HTML, CSS/SASS, React component architecture</td><td>You build coded prototypes in HTML/CSS/JS and React/TypeScript (for example obdxtf.netlify.app). You use Figma Dev Mode and Figma MCP</td><td class="fit-ok">Good</td></tr>
+        <tr><td>AI tools for exploration, QA, docs</td><td>Claude Code and Figma MCP in daily work. AI steps brought into the team</td><td class="fit-ok">Good</td></tr>
+        <tr><td>Healthcare or HealthTech (a plus)</td><td>ClinChoice 2019–21: clinical-trial dashboards and mobile for clients like J&amp;J and P&amp;G</td><td class="fit-ok">Bonus. Say it!</td></tr>
+        <tr><td>Distributed, multi-time-zone teams</td><td>Bank clients in Egypt, Tanzania and Nigeria, plus onsite work in Tanzania</td><td class="fit-ok">Good</td></tr>
+        <tr><td><b>Build and maintain custom Figma plugins</b></td><td>No production plugin that you’ve shipped (fill in if you have)</td><td class="fit-gap">Gap. Be honest</td></tr>
+        <tr><td><b>Measure design debt and component coverage</b></td><td>Only if you tracked it. Otherwise explain how you would</td><td class="fit-gap">Check</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="callout warn">
+    <p><b>You already sent them these numbers</b> in your 25 Sep application email: 200+ components, 3 bank deployments, handoff cut from 5 days to 2, and 98% WCAG 2.1 AA across 150+ screens with zero critical issues. Expect “how did you measure that?” Check the Numbers table on the All interviews tab tonight.</p>
+  </div>
+</section>
+
+<section id="gl-10">
+  <div class="sec-head">
+    <span class="label">Memorize these, not 55 answers</span>
+    <h2>10 things to remember</h2>
+  </div>
+  <ol class="ten">
+    <li><span><b>Design system:</b> shared product setup, not a Figma library.</span></li>
+    <li><span><b>Tokens:</b> raw value → meaning → component → product.</span></li>
+    <li><span><b>Governance:</b> set the standards centrally, not every decision.</span></li>
+    <li><span><b>Contribution:</b> let product teams add to it without breaking the structure.</span></li>
+    <li><span><b>Adoption:</b> measure results, not how many components exist.</span></li>
+    <li><span><b>Design debt:</b> fix the repeated mess that costs the most later.</span></li>
+    <li><span><b>Engineering:</b> design and engineering build the system together.</span></li>
+    <li><span><b>Accessibility:</b> build it in at token, component and pattern level.</span></li>
+    <li><span><b>AI:</b> speeds up repetitive work. People still make design decisions.</span></li>
+    <li><span><b>Leadership:</b> turn what one person knows into docs and tools, so teams can work on their own.</span></li>
+  </ol>
+</section>
+
+<section id="gl-qa">
+  <div class="sec-head">
+    <span class="label">Tap to open · tick when you can say it without notes</span>
+    <h2>GlobalLogic questions and answers</h2>
+  </div>
+  <div class="qa" id="glList"></div>
+  <p class="empty" id="glEmpty">No question matches that search.</p>
+</section>
+
+<section id="gl-ask">
+  <div class="sec-head">
+    <span class="label">Ask in this order, stop when time runs out</span>
+    <h2>Questions to ask GlobalLogic</h2>
+  </div>
+  <ol class="ten">
+    <li><span>“How mature is the design system today, and what’s the biggest challenge: adoption, structure, rules, or keeping Figma and code in sync?”</span></li>
+    <li><span>“How are Figma variables connected to the engineering tokens right now?”</span></li>
+    <li><span>“How do product teams contribute to the system today?”</span></li>
+    <li><span>“Which areas of design debt do you most want this person to fix?”</span></li>
+    <li><span>“What would success look like for this role after six months?”</span></li>
+  </ol>
+</section>
+
+<footer>GlobalLogic tab built from your prep notes and the job description in the 29 Sep interview invite.</footer>
 </div>
 
 <script>
 const T = {lived:["t-lived","Lived"], ex:["t-ex","Exercise"], hy:["t-hy","Approach"], fill:["t-fill","Needs your facts"]};
 
 const companies = [
+  {n:"GlobalLogic", r:"Design Systems & Operations Lead · Hybrid India", s:["live","L1 Wed 11:00"], p:["L1 on Google Meet, Wed 30 Sep, 11:00–11:30 IST, with Poonam Lohani as organizer","Do the Export Compliance form from the 28 Sep email","Full prep is in the GlobalLogic tab at the top"]},
   {n:"i-exceed", r:"Lead UI/UX Designer · Bangalore", s:["live","L1 coming"], p:["Recruiter Parthiban M (24 Sep): L1 to be scheduled soon","i-exceed builds digital banking platforms, so banking depth is your edge","JD stresses: estimation and schedules, team and client coordination, IA, task flows, prototypes","JD names Adobe XD, Photoshop, JustInMind/Marvel. Be ready to say how you work if they use XD, not Figma","See the “i-exceed” questions below"]},
   {n:"Virtusa", r:"UI/UX Design Lead · Dubai", s:["live","Being submitted"], p:["Via Innovations Global (Sonal, 25 Sep)","Form lists: expected AED 20K, notice 30 days (can be 15), location India","You told her Virtusa already called you directly. Clear this up so you aren’t submitted twice","Services company, like JMR. Lead with delivery, client handling, design systems"]},
   {n:"Nagarro", r:"Mettl test done 24 Sep", s:["live","Waiting"], p:["Test submitted. Nagarro will contact you if shortlisted","Next rounds usually: technical interview, then HR","You asked Lokesh for the JD. Still no role details, so prep the general design Q&A"]},
@@ -795,38 +935,247 @@ let store = {};
 try{ store = JSON.parse(localStorage.getItem("mk-prep-done")||"{}"); }catch(e){ store = {}; }
 const save = ()=>{ try{ localStorage.setItem("mk-prep-done", JSON.stringify(store)); }catch(e){} };
 
-let n = 0;
-document.getElementById("qaList").innerHTML = qa.map(g=>`
+const renderQA = (list, prefix) => { let n = 0; return list.map(g=>`
  <div class="group" data-group><div class="group-title">${esc(g.g)}</div>
- ${g.items.map(it=>{ const id="q"+(++n); return `
+ ${g.items.map(it=>{ const id=prefix+(++n); return `
  <details class="q${store[id]?" is-done":""}" data-id="${id}">
   <summary>${chev}<span class="qtext">${esc(it.q)}</span></summary>
   <div class="qbody">
    <div class="meta">${tag(it.type)}</div>
    <div class="ans">${it.a.map(p=>`<p>${esc(p)}</p>`).join("")}</div>
+   ${it.code?`<pre class="code">${esc(it.code)}</pre>`:""}
    ${it.fillnote?`<p class="fillnote"><b>Your facts:</b> ${esc(it.fillnote)}</p>`:""}
    ${it.note?`<p class="note">${esc(it.note)}</p>`:""}
    ${it.fu?`<div class="fu">${it.fu.map(f=>`<span><b>Follow-up: ${esc(f[0])}</b><br>${esc(f[1])}</span>`).join("")}</div>`:""}
    <label class="done-row"><input type="checkbox" id="c-${id}" ${store[id]?"checked":""}> I can say this without notes</label>
   </div>
- </details>`}).join("")}</div>`).join("");
+ </details>`}).join("")}</div>`).join(""); };
+
+const gl = [
+ {g:"Opening", items:[
+  {q:"Tell me about yourself.", type:"lived", a:[
+   "I have 11 years in design. For the last several years my focus has been enterprise banking platforms, design systems and running a design team.",
+   "At JMR Infotech I lead a team of five and own a 200+ component multi-brand design system in Figma. It runs across three bank deployments on Oracle OBDX, and I handle its tokens, variables, theming, rules, docs, versions and design QA.",
+   "I also work close to code. I build coded prototypes and use Figma Dev Mode and Figma MCP to keep design and code in step.",
+   "Before banking I worked on healthcare products at ClinChoice, on clinical-trial dashboards.",
+   "What draws me to this role is that it treats the design system as infrastructure: tokens, Figma-to-code, rules, accessibility, docs and automation. That’s the part of my work I enjoy most."],
+   note:"Mention healthcare. The job description lists it as a plus, and you have it."},
+  {q:"Why this role?", type:"lived", a:[
+   "Over time I got more interested in the setup behind design than in single screens: one source of truth, how designers and engineers stay in sync, how people contribute, and how to cut repeated work with automation and AI.",
+   "This role is exactly that, full time."]},
+  {q:"Why should we hire you?", type:"lived", a:[
+   "I’ve built and run a real multi-brand system in a complex enterprise setting, not just a library.",
+   "I work close to code, I build accessibility into the foundations, and I lead a team, so I know what makes designers and engineers actually use a system.",
+   "And I have healthcare experience, which you listed as a plus."]},
+  {q:"Tell me about a challenging design-system project.", type:"lived", a:[
+   "At JMR, retail, corporate and trade-finance modules were being designed in parallel for several banks, and they were drifting apart.",
+   "I audited the screens, set up foundations and semantic tokens, built components with clear properties, and added rules for how new parts get proposed and reviewed.",
+   "Brand differences went into variable modes, so one component set serves three bank deployments.",
+   "Handoff got much faster because developers stopped asking the same questions. The lesson: the library alone doesn’t fix anything. Rules and adoption do."],
+   fillnote:"Only say “5 days to 2” if you can explain how it was measured. You already put it in your application email, so they may ask."},
+  {q:"What is your weakness?", type:"lived", a:[
+   "Earlier in my career I polished designs too long before bringing engineers in.",
+   "On complex projects I learned that early joint work saves far more time. Now, for system work, I bring engineering in at the start, especially for tokens, component behavior and responsive rules."]}
+ ]},
+ {g:"Design system basics", items:[
+  {q:"What is a design system?", type:"hy", a:[
+   "More than a Figma library. It’s shared product infrastructure: principles, tokens, components, patterns, docs, accessibility, code and the rules for how it changes.",
+   "The goal isn’t just a consistent look. It’s helping teams decide faster without solving the same problem again.",
+   "It works when teams can solve common problems without asking the system team every time."],
+   code:"Foundations  → color, type, spacing, elevation, motion\nComponents   → button, input, table, card, dialog\nPatterns     → forms, search, login, payments, errors\nProducts     → web, mobile, admin\n\nAround it: rules · docs · engineering · accessibility · metrics"},
+  {q:"How would you build an enterprise design system from scratch?", type:"hy", a:[
+   "Start with discovery, not components. Look at the products, the Figma libraries, the coded components, duplicates, accessibility issues and what hurts designers and engineers today.",
+   "Then set foundations and the token structure. Build components in order of use and impact, not all at once.",
+   "Set up rules, contribution and the Figma-to-code flow in parallel. Then measure adoption and quality."],
+   code:"1 Discover → 2 Audit → 3 Foundations + tokens\n→ 4 Components + patterns → 5 Rules + docs → 6 Adoption + measure"},
+  {q:"How do you decide what goes into the system?", type:"hy", a:[
+   "Is it reused? Does it solve a common problem? Does it behave the same across products? Then it’s a candidate.",
+   "If it’s still experimental or very specific to one product, keep it local first.",
+   "A design system should standardize repeated decisions, not replace product thinking."]},
+  {q:"Explain design tokens.", type:"lived", a:[
+   "Named values that stand for design decisions. Instead of #0066FF everywhere, components use a name like color.action.primary.",
+   "If the brand color changes, you change one token and every component updates. That’s how my system serves three banks from one component set."],
+   code:"blue.500 = #0066FF          (primitive: what value)\ncolor.action.primary        (semantic: what it’s for)\nbutton.primary.background   (component)\n→ Primary button in the product"},
+  {q:"Primitive vs semantic tokens?", type:"lived", a:[
+   "Primitive tokens are raw values, like blue.500 or spacing.4 = 16px.",
+   "Semantic tokens say what the value is for, like color.text.primary or color.surface.default.",
+   "Components use semantic tokens only. That’s what makes themes and brand changes easy."]},
+  {q:"What are Figma variables and modes?", type:"lived", a:[
+   "Variables store reusable values in Figma. Modes give the same variable different values by context: light or dark, brand A or brand B, desktop or mobile.",
+   "For example color.surface.primary is white in light mode and near-black in dark. The component never knows the actual color.",
+   "In my ENBD task, one mode switch changed the whole file between ENBD and Emirates Islamic."]},
+  {q:"Variables vs variants vs component properties?", type:"lived", a:[
+   "Variables are values: color, spacing, radius, type.",
+   "Variants are configurations of a component: primary, secondary, tertiary.",
+   "Properties are the choices you expose to designers: variant, size, state, icon, label."],
+   code:"Variable = value\nVariant  = configuration\nProperty = choice exposed to the designer"},
+  {q:"How do you prevent variant explosion?", type:"lived", a:[
+   "Don’t make a variant for every combination. Use properties for real choices, and variables for values.",
+   "I design the component’s API, not every visual combination."],
+   code:"Bad:  Button-primary-large-hover, Button-primary-small-default…\nGood: Button\n  Variant: Primary / Secondary\n  Size:    S / M / L\n  State:   Default / Hover / Focus / Disabled\n  Icon:    None / Leading / Trailing"},
+  {q:"How would you structure a large Figma system?", type:"lived", a:[
+   "A structure people can guess without asking.",
+   "Pages: Foundations, Tokens, Components, Patterns, Templates, Documentation, Deprecated.",
+   "Plus naming rules, descriptions, owners, status, versions and release notes."]}
+ ]},
+ {g:"Figma to code", items:[
+  {q:"How would you connect Figma variables to code?", type:"lived", a:[
+   "One shared token setup for design and engineering, not two separate systems.",
+   "Figma variables get exported as token files, a pipeline turns them into CSS variables or a React theme, and components use those.",
+   "The goal isn’t that Figma and code look alike. It’s that both use the same design decisions."],
+   code:"Figma variables → token files (JSON)\n→ transform (e.g. Style Dictionary)\n→ CSS variables / React theme → components\n\n--color-action-primary: #0066FF;\n--spacing-md: 16px;",
+   note:"TIAA flagged Tokens Studio as a gap. If you can, try Tokens Studio or Style Dictionary tonight so you can talk about it from real use."},
+  {q:"What does single source of truth mean to you?", type:"hy", a:[
+   "Not “only Figma”. Each kind of decision has one clear home, and the homes are linked.",
+   "Design decisions live in the design system, tokens in the shared token files, UI in the code repo, and usage guidance in the docs. The real work is keeping them in sync."]},
+  {q:"Figma and code don’t match. What do you do?", type:"lived", a:[
+   "Say Figma has a 44px button and code has 40px. I don’t just ask the engineer to change it.",
+   "I find the cause: a wrong token, unclear docs, an old component, an outdated Figma file, or no automated check.",
+   "Then I fix the process, not only the button. It’s a system problem, not a person problem."]},
+  {q:"How do you work with engineering architects?", type:"lived", a:[
+   "Early, especially on foundations and component structure.",
+   "For each major component we agree on behavior, properties, states, accessibility and limits before it becomes a standard. That cuts rework."]},
+  {q:"This role needs React knowledge. How technical are you?", type:"lived", a:[
+   "I’d call myself technically fluent, not a production front-end engineer.",
+   "I build coded prototypes in HTML, CSS, JavaScript and React with TypeScript, so I understand props, states, composition and how tokens become CSS variables.",
+   "That lets me have real implementation discussions and make system decisions engineers can actually build. I don’t replace the front-end architect. I connect design and engineering."],
+   code:"<Button variant=\"primary\" size=\"lg\" disabled={false}>\n  Continue\n</Button>",
+   note:"Don’t claim to be a React developer. Point to obdxtf.netlify.app as proof that you build in code."},
+  {q:"What does good handoff look like?", type:"lived", a:[
+   "Handoff isn’t sending a Figma link. It starts when design and engineering agree on the component structure, and it continues through build and design QA.",
+   "I standardize naming, variants, properties, auto layout, responsive rules, states, annotations and accessibility.",
+   "I don’t document what the components and tokens already say. Useful docs, not more docs."]}
+ ]},
+ {g:"Rules, contribution and DesignOps", items:[
+  {q:"How do you run design-system governance?", type:"lived", a:[
+   "Light rules and clear owners, not a heavy committee.",
+   "The central team owns structure, standards and quality. Product teams can contribute.",
+   "Review depth matches the change: a small fix gets a quick review, a new component gets an architecture review."],
+   code:"Need found → proposal → system review → engineering review\n→ accessibility check → docs → release"},
+  {q:"How would you set up a contribution model?", type:"hy", a:[
+   "Four levels. Everyone consumes the system. Anyone can propose a missing piece. Experienced people contribute proposals. System owners approve on structure, accessibility, usability and feasibility.",
+   "Otherwise only the system team can touch it, and it becomes a bottleneck."]},
+  {q:"How do you stop the system team becoming a bottleneck?", type:"hy", a:[
+   "Move from a central team that does everything to a central team that sets standards while product teams contribute.",
+   "Centralize standards, not every decision."]},
+  {q:"How do you measure design-system success?", type:"hy", a:[
+   "Component count tells you nothing. I track adoption (share of products and screens using the system), coverage (how much UI you can build from existing parts), reuse and duplicates removed, time saved, quality (accessibility issues, mismatches with code), and health (design debt, contributions, docs coverage)."],
+   fillnote:"The job description says “track component coverage and design debt”. If you tracked anything like this at JMR, say it with real numbers."},
+  {q:"What is design debt, and how do you tackle it?", type:"hy", a:[
+   "The cost that builds up from inconsistent, duplicated or outdated design decisions. For example 5 button styles, 8 date pickers and 3 spacing systems.",
+   "Don’t fix everything. Rank by user impact, how often it appears, engineering impact and cost to fix."]},
+  {q:"How would you audit an existing system?", type:"hy", a:[
+   "Three sides. Figma: duplicates, naming, detached instances, unused and outdated parts.",
+   "Code: coded components, token use, component APIs, mismatches.",
+   "Organization: rules, contribution, docs, onboarding, adoption and ownership."]},
+  {q:"How do you move off a legacy system?", type:"hy", a:[
+   "No big-bang replacement. Audit, find the highest-impact problems, define the target, set migration rules, introduce new components, mark old ones deprecated, and migrate step by step."]},
+  {q:"How do you version the system?", type:"lived", a:[
+   "Minor for additions like a new optional property. Major for breaking changes like a removed property or changed behavior.",
+   "Each release gets a changelog, release notes, a migration guide and a clear deprecated status."]},
+  {q:"A team wants an exception. What do you do?", type:"hy", a:[
+   "Understand the reason first. A temporary exception is fine if documented. Product-specific stays local. If the same need keeps coming back, it belongs in the system.",
+   "Repeated exceptions are a signal that the system needs to grow."]},
+  {q:"How do you prioritize with a small team?", type:"hy", a:[
+   "High reuse, high impact, high pain goes first. Low reuse, highly custom work waits.",
+   "Then stretch the team with contribution, automation, self-serve docs and AI-assisted audits."]},
+  {q:"What does Design Operations mean to you?", type:"hy", a:[
+   "The setup that helps designers do their best work consistently: people, process, tools, standards, knowledge and measurement.",
+   "Good DesignOps removes friction without adding bureaucracy. Designers should know where to find things, which component to use, who owns it, how to contribute and how to work with engineering."]}
+ ]},
+ {g:"Plugins, automation and AI", items:[
+  {q:"Have you built Figma plugins?", type:"fill", a:[
+   "If not in production: “My strongest work is with Figma’s system features and AI tooling to improve workflows. I haven’t shipped a production plugin end to end, and I’d rather be clear about that.",
+   "I do know where plugins pay off: linting, asset management, docs and QA. And I’m comfortable defining the rules and building with engineering. I also build in code, so writing a plugin is a short step for me.”"],
+   fillnote:"The job description asks you to build and maintain plugins. Don’t overclaim. If you have built even a small one, say exactly what it did."},
+  {q:"How would you build a Figma linting plugin?", type:"hy", a:[
+   "The plugin reads the document’s nodes, checks them against rules, lists violations, and the designer fixes them.",
+   "Rules: color not from a token, spacing off the scale, wrong text style, detached component, bad naming, missing accessibility note.",
+   "I’d start with fixed rules, not AI, because linting must be predictable. AI can help later with the fuzzy checks."],
+   code:"Figma document → read nodes → check rules → compare to system\n→ list violations → designer fixes"},
+  {q:"Would you build a tool or buy one?", type:"hy", a:[
+   "First define the problem and check if a tool already solves it.",
+   "Build only when the workflow is specific to us, nothing existing fits, and the long-term value covers the upkeep. Weigh frequency, impact, maintenance, security and scale."]},
+  {q:"How do you use AI in design-system work?", type:"lived", a:[
+   "For the repetitive and analytical parts: audits for duplicates and naming, first drafts of component docs and release notes, spotting missing states and contrast issues, summarizing research, and reading unfamiliar code.",
+   "I use Claude Code and Figma MCP in my daily work.",
+   "AI speeds up the workflow, but it doesn’t make the design decisions."]},
+  {q:"How would you combine AI with rule-based QA?", type:"hy", a:[
+   "Rules for what can be checked objectively: tokens, spacing, component use, naming, type.",
+   "AI for what needs judgment: is the content clear, is this pattern confusing, is there a likely accessibility problem, do the docs explain enough.",
+   "Both feed into a human review."],
+   code:"Rules + AI → human review → fix"}
+ ]},
+ {g:"Accessibility", items:[
+  {q:"How do you build accessibility into a design system?", type:"lived", a:[
+   "At three levels. Tokens: contrast, focus colors, text sizes, spacing.",
+   "Components: keyboard access, focus, target size, labels, error messages, dialog focus handling.",
+   "Patterns: navigation, login, forms, tables, search, error recovery.",
+   "And it’s part of the contribution checklist, so nothing ships without it. That’s how we built our banking foundations."]},
+  {q:"What is WCAG?", type:"hy", a:[
+   "The Web Content Accessibility Guidelines. Four principles: Perceivable (people can take in the content), Operable (they can use it), Understandable (they can follow it), Robust (it works with assistive technology).",
+   "AA is the usual target, for example 4.5:1 contrast for body text."]},
+  {q:"How do you make sure accessibility isn’t forgotten?", type:"lived", a:[
+   "Put it inside the component definition, not a final checklist.",
+   "Every component spec covers visual, interaction, keyboard, focus, screen reader, contrast, and error and disabled states. A contribution isn’t done until those are covered."]}
+ ]},
+ {g:"Docs and enablement", items:[
+  {q:"How do you document a component?", type:"lived", a:[
+   "What it is, when to use it, when not to, its parts, behavior, states, accessibility, and the code mapping.",
+   "Docs should answer real questions when people need them, not repeat what Figma already shows."]},
+  {q:"What are Design Decision Records?", type:"hy", a:[
+   "A short note for each big decision: the problem, the options, the choice and why, and the impact.",
+   "Six months later, when someone asks why, the answer doesn’t depend on who was in the room."],
+   code:"Decision: 4px spacing base\nProblem: products use mixed spacing\nOptions: 4px or 8px\nWhy: dense enterprise screens need finer steps\nImpact: migrate existing screens gradually"},
+  {q:"How do you reduce dependence on key people?", type:"lived", a:[
+   "Turn what experts know into docs, templates, standards, training and self-serve help: onboarding guides, contribution guides, checklists, recorded sessions and FAQs."]},
+  {q:"How would you onboard a new designer?", type:"lived", a:[
+   "Week 1: product context, principles, Figma structure, the system, accessibility.",
+   "Week 2: component use, responsive patterns, working with developers.",
+   "Week 3: a real task, reviews and a first contribution to the system. The goal is that they don’t need a senior to get unblocked."]}
+ ]},
+ {g:"Leadership", items:[
+  {q:"How do you lead a design team?", type:"lived", a:[
+   "Clarity, ownership and enablement. I set principles and give feedback, but I don’t want five designers waiting on me for every decision.",
+   "I invest in growth, knowledge sharing and better process, so the team gets stronger over time."]},
+  {q:"Two designers disagree on a system decision.", type:"lived", a:[
+   "Separate taste from principle. Check the user problem, research, accessibility, system consistency and engineering limits, then decide on evidence.",
+   "The loudest person shouldn’t shape the system."]},
+  {q:"Quality vs deadlines?", type:"lived", a:[
+   "Never compromise on accessibility, critical usability, core behavior or system integrity. Visual polish and secondary extras can wait for the next release.",
+   "Speed should come from reuse and good systems, not from lowering quality every time."]},
+  {q:"What would your first 90 days look like?", type:"hy", a:[
+   "Days 1–30, understand: people, products, Figma, code, rules, design debt, engineering flow. Deliver a current-state review.",
+   "Days 31–60, set up: token structure, rules, contribution, docs, accessibility standards, Figma-to-code flow, metrics. Deliver an operating model and a ranked roadmap.",
+   "Days 61–90, prove it: 2–3 high-impact fixes, like token cleanup, library restructure or better handoff. Show real improvement, not just a plan."]},
+  {q:"Do you have healthcare experience?", type:"lived", a:[
+   "Yes. At ClinChoice, then called IMed Global, from 2019 to 2021, I worked on clinical-trial dashboards and mobile experiences for clients like J&J and P&G.",
+   "I used interviews, usability tests and heuristic reviews. Clinical users work under pressure with dense data, so clarity and accuracy come first. Banking has the same kind of stakes."]}
+ ]}
+];
+
+document.getElementById("qaList").innerHTML = renderQA(qa, "q");
+document.getElementById("glList").innerHTML = renderQA(gl, "g");
 
 document.getElementById("rapidList").innerHTML = rapid.map(r=>`
  <details class="q"><summary>${chev}<span class="qtext">${esc(r[0])}</span></summary>
  <div class="qbody"><div class="ans"><p>${esc(r[1])}</p></div></div></details>`).join("");
 
-document.getElementById("qaList").addEventListener("change", e=>{
+["qaList","glList"].forEach(id=>document.getElementById(id).addEventListener("change", e=>{
   if(e.target.type!=="checkbox") return;
-  const d = e.target.closest("details"); const id = d.dataset.id;
-  if(e.target.checked){ store[id]=1; d.classList.add("is-done"); } else { delete store[id]; d.classList.remove("is-done"); }
+  const d = e.target.closest("details"); const k = d.dataset.id;
+  if(e.target.checked){ store[k]=1; d.classList.add("is-done"); } else { delete store[k]; d.classList.remove("is-done"); }
   save();
-});
+}));
 
+const views = {main:{tab:"tab-main",view:"view-main",chips:"chipsMain",list:"qaList",empty:"empty",sec:"qa"},
+               gl:{tab:"tab-gl",view:"view-gl",chips:"chipsGL",list:"glList",empty:"glEmpty",sec:"gl-qa"}};
+let current = "main";
 const search = document.getElementById("search");
-search.addEventListener("input", ()=>{
-  const v = search.value.trim().toLowerCase();
+function runSearch(){
+  const v = search.value.trim().toLowerCase(); const c = views[current];
   let any = false;
-  document.querySelectorAll("#qaList .group").forEach(g=>{
+  document.querySelectorAll("#"+c.list+" .group").forEach(g=>{
     let shown = 0;
     g.querySelectorAll("details").forEach(d=>{
       const hit = !v || d.textContent.toLowerCase().includes(v);
@@ -835,9 +1184,29 @@ search.addEventListener("input", ()=>{
     });
     g.classList.toggle("hide", shown===0); if(shown) any = true;
   });
-  document.getElementById("empty").style.display = any ? "none" : "block";
-  if(v) document.getElementById("qa").scrollIntoView({block:"start"});
-});
+  document.getElementById(c.empty).style.display = any ? "none" : "block";
+  return v;
+}
+search.addEventListener("input", ()=>{ if(runSearch()) document.getElementById(views[current].sec).scrollIntoView({block:"start"}); });
+function show(name, scroll){
+  current = name;
+  Object.entries(views).forEach(([k,c])=>{
+    const on = k===name;
+    document.getElementById(c.view).hidden = !on;
+    document.getElementById(c.chips).hidden = !on;
+    document.getElementById(c.tab).setAttribute("aria-selected", on ? "true" : "false");
+  });
+  search.placeholder = name==="gl" ? "Search GlobalLogic questions (e.g. tokens, plugin, React)" : "Search any question (e.g. tokens, RTL, salary)";
+  if(search.value) runSearch();
+  try{ localStorage.setItem("mk-prep-tab", name); }catch(e){}
+  if(scroll) window.scrollTo(0,0);
+}
+document.getElementById("tab-main").addEventListener("click", ()=>show("main", true));
+document.getElementById("tab-gl").addEventListener("click", ()=>show("gl", true));
+let start = "main";
+try{ if(localStorage.getItem("mk-prep-tab")==="gl") start = "gl"; }catch(e){}
+if(/^#(globallogic|gl)/.test(location.hash)) start = "gl";
+show(start, false);
 </script>
 </body>
 </html>
