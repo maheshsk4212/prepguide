@@ -101,7 +101,9 @@ details.q[open]{border-color:var(--accent)}
 details.q summary{list-style:none;cursor:pointer;padding:13px 14px;display:flex;gap:10px;align-items:flex-start}
 details.q summary::-webkit-details-marker{display:none}
 details.q summary:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:12px}
-.qtext{flex:1;font-weight:600;font-size:16px;line-height:1.4}
+.qtext{flex:1;font-weight:600;font-size:16px;line-height:1.4;display:flex;flex-direction:column;gap:4px}
+.hook{font:500 13px/1.45 var(--mono);color:var(--accent);letter-spacing:.01em}
+.hook::before{content:"Remember: ";color:var(--muted)}
 .chev{flex:0 0 auto;width:20px;height:20px;margin-top:1px;color:var(--muted);transition:transform .15s}
 details[open] .chev{transform:rotate(90deg)}
 .qbody{padding:0 14px 14px;display:flex;flex-direction:column;gap:10px}
@@ -169,6 +171,7 @@ pre.code{margin:0;background:var(--sunk);border-radius:8px;padding:10px 12px;fon
 .ten li{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 12px;display:flex;gap:10px;font-size:15px}
 .ten li::before{counter-increment:t;content:counter(t);font:600 14px var(--mono);color:var(--accent);min-width:20px}
 .ten b{font-weight:600}
+.hook-plain{font:500 13px/1.5 var(--mono);color:var(--accent)}
 .empty{display:none;color:var(--muted);font-size:15px;padding:10px 0}
 .hide{display:none!important}
 footer{padding-top:40px;color:var(--muted);font-size:13px}
@@ -186,6 +189,7 @@ footer{padding-top:40px;color:var(--muted);font-size:13px}
     </div>
     <div class="chips" id="chipsFAB" hidden>
       <a href="#fab-top">Before the call</a>
+      <a href="#fab-must">Must know</a>
       <a href="#fab-fit">Your fit</a>
       <a href="#fab-pitch">How to pitch</a>
       <a href="#fab-qa">Q&amp;A</a>
@@ -193,6 +197,7 @@ footer{padding-top:40px;color:var(--muted);font-size:13px}
     </div>
     <div class="chips" id="chipsGL" hidden>
       <a href="#gl-top">Before the call</a>
+      <a href="#gl-must">Must know</a>
       <a href="#gl-fit">Your fit</a>
       <a href="#gl-10">10 to remember</a>
       <a href="#gl-qa">Q&amp;A</a>
@@ -440,6 +445,15 @@ footer{padding-top:40px;color:var(--muted);font-size:13px}
   </div>
 </section>
 
+<section id="gl-must">
+  <div class="sec-head">
+    <span class="label">Read this 3 times tonight, once before the call</span>
+    <h2>Must know tonight</h2>
+    <p>The most likely questions and the one line to remember. Every question below also shows its “Remember” line without opening it.</p>
+  </div>
+  <ol class="ten"><li><span><b>Tell me about yourself.</b><br><span class="hook-plain">11 years · 200+ system, 3 banks · close to code · healthcare · I love the setup behind design</span></span></li><li><span><b>What is a design system?</b><br><span class="hook-plain">Shared infrastructure, not a Figma library</span></span></li><li><span><b>Explain design tokens.</b><br><span class="hook-plain">Named decisions. Change once, everything updates</span></span></li><li><span><b>How would you connect Figma variables to code?</b><br><span class="hook-plain">Figma → JSON → transform → CSS / React → components</span></span></li><li><span><b>How do you run design-system governance?</b><br><span class="hook-plain">Light rules, clear owners, review sized to the change</span></span></li><li><span><b>How do you measure design-system success?</b><br><span class="hook-plain">Adoption · coverage · reuse · time saved · quality · health</span></span></li><li><span><b>Have you built Figma plugins?</b><br><span class="hook-plain">Honest: not shipped one yet. I know where they pay off, and I build in code</span></span></li><li><span><b>This role needs React knowledge. How technical are you?</b><br><span class="hook-plain">Technically fluent, not a front-end engineer. I build prototypes in code</span></span></li><li><span><b>How do you build accessibility into a design system?</b><br><span class="hook-plain">Tokens · components · patterns · checklist</span></span></li><li><span><b>What would your first 90 days look like?</b><br><span class="hook-plain">Understand · set up · prove it</span></span></li></ol>
+</section>
+
 <section id="gl-fit">
   <div class="sec-head">
     <span class="label">Job description vs your proof</span>
@@ -532,6 +546,15 @@ footer{padding-top:40px;color:var(--muted);font-size:13px}
     <p><b>“A coding challenge may be run.”</b> That line is in every Virtusa invite. For a designer it usually means a live design task. Have Figma open and a blank file ready.</p>
     <p><b>Laptop, quiet room, good light, charger plugged in.</b> Close extra tabs and browser extensions.</p>
   </div>
+</section>
+
+<section id="fab-must">
+  <div class="sec-head">
+    <span class="label">Read this 3 times tonight, once before the call</span>
+    <h2>Must know tonight</h2>
+    <p>The most likely questions and the one line to remember. Every question below also shows its “Remember” line without opening it.</p>
+  </div>
+  <ol class="ten"><li><span><b>How do you diverge between Apple’s Human Interface Guidelines and Android Material Design for a banking use case?</b><br><span class="hook-plain">Same brand, flow and rules. Native navigation, dialogs and prompts</span></span></li><li><span><b>What process do you follow to design a new feature, end to end?</b><br><span class="hook-plain">Understand · define · flow · review early · design · test · hand off · measure</span></span></li><li><span><b>This is a mid-level role. You have 11 years. Why?</b><br><span class="hook-plain">Go deep on one big product. My years make me faster</span></span></li><li><span><b>Which native apps have you designed?</b><br><span class="hook-plain">App · feature · problem · fix</span></span></li><li><span><b>Design a transaction history screen.</b><br><span class="hook-plain">Group by date · clear pending · sign, not color · search · detail sheet</span></span></li><li><span><b>How do you work within an existing, mature design system?</b><br><span class="hook-plain">Use what exists · variant first · propose last</span></span></li><li><span><b>What security considerations go into banking app design?</b><br><span class="hook-plain">Mask · timeout · re-check · warnings · receipt</span></span></li><li><span><b>How would you design for Arabic users?</b><br><span class="hook-plain">Design both together, mirror with care, test both</span></span></li></ol>
 </section>
 
 <section id="fab-pitch">
@@ -1036,11 +1059,12 @@ let store = {};
 try{ store = JSON.parse(localStorage.getItem("mk-prep-done")||"{}"); }catch(e){ store = {}; }
 const save = ()=>{ try{ localStorage.setItem("mk-prep-done", JSON.stringify(store)); }catch(e){} };
 
+const HOOKS = {"Tell me about yourself.": "11 years · 200+ system, 3 banks · close to code · healthcare · I love the setup behind design", "Why this role?": "The setup behind design is my favorite work. This role is that, full time", "Why should we hire you?": "Real system built · close to code · accessibility · lead a team · healthcare", "Tell me about a challenging design-system project.": "Drift → audit → tokens → rules → one set for 3 banks", "What is your weakness?": "Brought engineers in late. Now they join on day one", "What is a design system?": "Shared infrastructure, not a Figma library", "How would you build an enterprise design system from scratch?": "Discover · Audit · Foundations · Components · Rules · Measure", "How do you decide what goes into the system?": "Reused + common + same behavior = in. Experimental = keep local", "Explain design tokens.": "Named decisions. Change once, everything updates", "Primitive vs semantic tokens?": "Primitive = what value. Semantic = what it’s for", "What are Figma variables and modes?": "Same name, different value per mode (light/dark, brand)", "Variables vs variants vs component properties?": "Value · configuration · choice", "How do you prevent variant explosion?": "Design the API, not every combination", "How would you structure a large Figma system?": "Foundations → Tokens → Components → Patterns → Docs → Deprecated", "How would you connect Figma variables to code?": "Figma → JSON → transform → CSS / React → components", "What does single source of truth mean to you?": "One home per type of decision, all linked", "Figma and code don’t match. What do you do?": "Find the cause, fix the process, not the person", "How do you work with engineering architects?": "Agree behavior, props, states and accessibility early", "This role needs React knowledge. How technical are you?": "Technically fluent, not a front-end engineer. I build prototypes in code", "What does good handoff look like?": "Agree the structure early, stay through design QA", "How do you run design-system governance?": "Light rules, clear owners, review sized to the change", "How would you set up a contribution model?": "Consume · Propose · Contribute · Approve", "How do you stop the system team becoming a bottleneck?": "Centralize standards, not every decision", "How do you measure design-system success?": "Adoption · coverage · reuse · time saved · quality · health", "What is design debt, and how do you tackle it?": "Repeated mess that costs later. Rank by impact and cost", "How would you audit an existing system?": "Three sides: Figma · code · organization", "How do you move off a legacy system?": "No big bang. Deprecate and migrate step by step", "How do you version the system?": "Minor = add. Major = break. Always release notes", "A team wants an exception. What do you do?": "Repeated exceptions mean the system must grow", "How do you prioritize with a small team?": "High reuse, high pain first", "What does Design Operations mean to you?": "People · process · tools · standards · knowledge · measurement", "Have you built Figma plugins?": "Honest: not shipped one yet. I know where they pay off, and I build in code", "How would you build a Figma linting plugin?": "Read nodes → check rules → list issues. Rules first, AI later", "Would you build a tool or buy one?": "Buy, unless it’s specific to us and worth the upkeep", "How do you use AI in design-system work?": "AI does the repetitive work. People decide", "How would you combine AI with rule-based QA?": "Rules for facts, AI for judgment, a human decides", "How do you build accessibility into a design system?": "Tokens · components · patterns · checklist", "What is WCAG?": "POUR: Perceivable · Operable · Understandable · Robust", "How do you make sure accessibility isn’t forgotten?": "Put it inside every component spec", "How do you document a component?": "What · when · when not · parts · states · accessibility · code", "What are Design Decision Records?": "Problem · options · choice · why · impact", "How do you reduce dependence on key people?": "Turn what experts know into docs and tools", "How would you onboard a new designer?": "Week 1 learn · week 2 practice · week 3 contribute", "How do you lead a design team?": "Clarity · ownership · enablement", "Two designers disagree on a system decision.": "Evidence beats the loudest voice", "Quality vs deadlines?": "Never cut accessibility or core behavior. Polish can wait", "What would your first 90 days look like?": "Understand · set up · prove it", "Do you have healthcare experience?": "Yes: ClinChoice 2019–21, clinical dashboards for J&J and P&G", "How do you diverge between Apple’s Human Interface Guidelines and Android Material Design for a banking use case?": "Same brand, flow and rules. Native navigation, dialogs and prompts", "What process do you follow to design a new feature, end to end?": "Understand · define · flow · review early · design · test · hand off · measure", "This is a mid-level role. You have 11 years. Why?": "Go deep on one big product. My years make me faster", "Why FAB, and why the UAE?": "Big bank, used every day, and I live here", "What are your salary expectations?": "Ask their budget first. Know your floor", "Which native apps have you designed?": "App · feature · problem · fix", "How do you design for iOS and Android differently?": "One shared system, native habits on each", "How do you handle micro-states?": "Every state, especially pending and offline", "How do you use biometrics and login on mobile?": "Fast login, PIN fallback, re-check for risky actions", "Design a transaction history screen.": "Group by date · clear pending · sign, not color · search · detail sheet", "How would you design statements?": "Pick period · summary first · PDF", "Design a multi-account dashboard.": "Balances first · hide toggle · actions one tap away", "How do you make complex financial data scannable?": "One main number · right-aligned · details on tap", "How do you work within an existing, mature design system?": "Use what exists · variant first · propose last", "You found a gap in the system. What do you do?": "Local version now, proposal in parallel", "Figma: auto layout, components, variables, prototyping?": "Auto layout · properties · variables · prototypes", "How do you work with compliance and legal?": "Bring them in early. Ask what the rule protects", "What security considerations go into banking app design?": "Mask · timeout · re-check · warnings · receipt", "How would you design for Arabic users?": "Design both together, mirror with care, test both", "A transfer fails after money leaves the account. What does the app show?": "What happened · where the money is · when it’s back · what next", "How do you test a mobile banking feature?": "Real phone · 5 users · real tasks · fix · retest", "How do you make a mobile app accessible?": "Contrast · 44pt/48dp · labels · big text · not color alone", "What’s in your developer handoff for native apps?": "States · pt/dp · platform differences · QA on device", "How do you work in Agile / Scrum?": "Design one sprint ahead", "Live task: “Improve our transaction list” or “Design a new transfer.”": "Ask · pick one flow · edge cases · test", "Which projects will you show?": "Mobile first · data-heavy · a system piece", "What would you improve in the FAB app?": "One thing I like, one gap, check with data"};
 const renderQA = (list, prefix) => { let n = 0; return list.map(g=>`
  <div class="group" data-group><div class="group-title">${esc(g.g)}</div>
  ${g.items.map(it=>{ const id=prefix+(++n); return `
  <details class="q${store[id]?" is-done":""}" data-id="${id}">
-  <summary>${chev}<span class="qtext">${esc(it.q)}</span></summary>
+  <summary>${chev}<span class="qtext">${esc(it.q)}${HOOKS[it.q]?`<span class="hook">${esc(HOOKS[it.q])}</span>`:""}</span></summary>
   <div class="qbody">
    <div class="meta">${tag(it.type)}</div>
    <div class="ans">${it.a.map(p=>`<p>${esc(p)}</p>`).join("")}</div>
@@ -1265,7 +1289,7 @@ const fab = [
    "Banking example, back in the middle of a transfer. On iOS people swipe back. On Android they press the system back button or use the back gesture. On both, I stop them losing what they typed with a “Discard this transfer?” check. On Android that’s a Material dialog, on iOS a native alert.",
    "Second example, biometric login. iOS says “Log in with Face ID” and uses Apple’s Face ID prompt. Android uses its own biometric prompt and says “Use fingerprint”. Both fall back to PIN.",
    "Third, screen privacy. Android can block screenshots on sensitive screens. iOS can’t, so we blur the app in the app switcher and hide balances instead."],
-   code:"KEEP THE SAME (both)              ADAPT PER PLATFORM\n-------------------------------   ------------------------------------------\nBrand, tokens, colors             iOS: tab bar, large titles, swipe back\nFlow order and steps              Android: bottom nav, top app bar, system back\nFees, rates, legal text           iOS alert/action sheet vs Material dialog/bottom sheet\nSecurity and OTP steps            Date pickers: iOS inline/wheel vs Material date range\nConfirmation + receipt content    Biometrics: Face ID/Touch ID vs Android biometric prompt\nComponent logic and states        OTP autofill: iOS keyboard suggestion vs Android SMS consent\n                                  Fonts: SF Pro vs Roboto (or brand font)\n                                  Targets: 44pt vs 48dp · Share sheet · Haptics\n                                  Wallet: official Apple Pay / Google Wallet buttons",
+   code:"SAME ON BOTH\n• Brand, colors, tokens\n• Flow order and steps\n• Fees, rates, legal text\n• Security and OTP steps\n• Confirmation and receipt\n\nADAPT PER PLATFORM (iOS | Android)\n• Nav: tab bar + swipe back | bottom nav + system back\n• Dialogs: alert / action sheet | Material dialog / bottom sheet\n• Biometrics: Face ID prompt | Android biometric prompt\n• OTP autofill: keyboard suggestion | SMS consent\n• Fonts: SF Pro | Roboto (or brand font)\n• Touch size: 44pt | 48dp\n• Wallet: Apple Pay button | Google Wallet button",
    fu:[["Where would you NOT follow the platform?","Where it would change the meaning or the rules. Fee disclosure, confirmation content, and security steps stay identical. And brand color and type stay ours, not system blue."],
        ["Amount entry on each platform?","Numeric keypad on both. iOS’s decimal pad has no Done key, so add a toolbar or a clear Continue button. Android can use the keyboard’s Next or Done action. Format AED as the user types, with 2 decimals."],
        ["Large text?","Support Dynamic Type on iOS and font scaling on Android. Amounts must never cut off, so test at the largest sizes and let rows wrap."],
