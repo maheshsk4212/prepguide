@@ -189,8 +189,8 @@ footer{padding-top:40px;color:var(--muted);font-size:13px}
   <div class="nav-in">
     <div class="tabs" role="tablist" aria-label="Guides">
       <button type="button" role="tab" id="tab-main" aria-controls="view-main" aria-selected="true">All interviews</button>
-      <button type="button" role="tab" id="tab-gl" aria-controls="view-gl" aria-selected="false">GlobalLogic <span class="tab-when">Tue 13:00</span></button>
-      <button type="button" role="tab" id="tab-fab" aria-controls="view-fab" aria-selected="false">Virtusa · FAB <span class="tab-when">6 Oct</span></button>
+      <button type="button" role="tab" id="tab-gl" aria-controls="view-gl" aria-selected="false">GlobalLogic <span class="tab-when">Team meetup</span></button>
+      <button type="button" role="tab" id="tab-fab" aria-controls="view-fab" aria-selected="false">Virtusa · FAB <span class="tab-when">On hold</span></button>
     </div>
     <div class="chips" id="chipsFAB" hidden>
       <a href="#fab-top">Before the call</a>
@@ -242,17 +242,16 @@ footer{padding-top:40px;color:var(--muted);font-size:13px}
 
 <section id="tomorrow" style="padding-top:20px">
   <div class="sec-head">
-    <span class="label">Tuesday 13 October</span>
-    <h2>Next interview</h2>
+    <span class="label">What’s next</span>
+    <h2>Next steps</h2>
   </div>
   <div class="tbl">
     <table>
-      <thead><tr><th>Time (IST)</th><th>What</th></tr></thead>
+      <thead><tr><th>Who</th><th>What</th></tr></thead>
       <tbody>
-        <tr><td class="num">Tonight</td><td>GlobalLogic tab: practice the 30-second intro and the 2-minute assignment story out loud. Decide your ₹ number</td></tr>
-        <tr><td class="num">Morning</td><td>Ask Poonam who the interviewer is</td></tr>
-        <tr><td class="num">12:55</td><td>Join Google Meet. Files open, camera at eye level</td></tr>
-        <tr><td class="num">13:00</td><td>GlobalLogic L3 · final round · 60 min</td></tr>
+        <tr><td class="num">GlobalLogic</td><td>Team meetup, date to confirm. Ask the recruiter: formal round or introduction? People-manager role? Grade or band? Who you report to?</td></tr>
+        <tr><td class="num">Virtusa · FAB</td><td>On hold. Nothing to do now</td></tr>
+        <tr><td class="num">Others</td><td>Keep i-exceed and other applications moving while GlobalLogic finishes</td></tr>
       </tbody>
     </table>
   </div>
@@ -672,6 +671,7 @@ footer{padding-top:40px;color:var(--muted);font-size:13px}
 
 <div class="wrap view" id="view-fab" role="tabpanel" aria-labelledby="tab-fab" hidden>
 <header class="hero" id="fab-top">
+  <div class="callout warn"><p><b>On hold (13 Oct).</b> The FAB opening is paused. Keep this tab as a reference. The native mobile, HIG vs Material and banking answers still help for other mobile and banking roles.</p></div>
   <span class="label">Virtusa · Job P-104767 · For First Abu Dhabi Bank (FAB)</span>
   <h1>UI/UX Product Designer, FAB mobile app</h1>
   <p>A hands-on role on FAB’s native iOS and Android banking app. They want strong UX and UI craft, and the discipline to work inside an existing, mature design system. Show craft and fit, not leadership.</p>
@@ -816,9 +816,9 @@ footer{padding-top:40px;color:var(--muted);font-size:13px}
 const T = {lived:["t-lived","Lived"], ex:["t-ex","Exercise"], hy:["t-hy","Approach"], fill:["t-fill","Needs your facts"]};
 
 const companies = [
-  {n:"GlobalLogic", r:"Design Systems & Operations Lead · Hybrid India", s:["live","L3 Tue 13:00"], p:["Passed L1, the assignment and the VP/Director round","Final L3 round online: Tue 13 Oct, 1:00–2:00 PM IST, Google Meet","Recruiter says “mostly formalities”. Still prepare: lead with results","Full prep is in the GlobalLogic tab at the top"]},
+  {n:"GlobalLogic", r:"Design System Manager · Hybrid India", s:["live","Team meetup next"], p:["Passed L1, assignment, VP/Director and L3 (13 Oct)","Title mentioned: Design System Manager","Next: face-to-face meetup with the teams. Ask if it’s a formal round","Ask: people-manager role? grade or band? who you report to?"]},
   {n:"i-exceed", r:"Lead UI/UX Designer · Bangalore", s:["live","L1 coming"], p:["Recruiter Parthiban M (24 Sep): L1 to be scheduled soon","i-exceed builds digital banking platforms, so banking depth is your edge","JD stresses: estimation and schedules, team and client coordination, IA, task flows, prototypes","JD names Adobe XD, Photoshop, JustInMind/Marvel. Be ready to say how you work if they use XD, not Figma","See the “i-exceed” questions below"]},
-  {n:"Virtusa · FAB", r:"UI/UX Product Designer · FAB mobile app", s:["live","Tue 6 Oct 15:30"], p:["Veriklick video, Tue 6 Oct, 3:30 PM IST. Invite labelled “L1 | Updated”","Bring a government photo ID","Mid-level native iOS/Android role for First Abu Dhabi Bank","Full prep is in the Virtusa · FAB tab at the top","Separate from the Design Lead role Innovations Global offered. Don’t let them submit you twice"]},
+  {n:"Virtusa · FAB", r:"UI/UX Product Designer · FAB mobile app", s:["","On hold"], p:["Opening put on hold (13 Oct)","Prep stays in the Virtusa · FAB tab for reuse in mobile and banking roles","Ask Virtusa to keep you in mind if it reopens"]},
   {n:"Nagarro", r:"Mettl test done 24 Sep", s:["live","Waiting"], p:["Test submitted. Nagarro will contact you if shortlisted","Next rounds usually: technical interview, then HR","You asked Lokesh for the JD. Still no role details, so prep the general design Q&A"]},
   {n:"Gemini Solutions", r:"Senior UI Designer, Banking · India", s:["check","No reply"], p:["Round 1 on 2 Sep. Task sent same day","You submitted 5 Sep: AED → INR transfer with co-pilot, 5-page Figma, 2-page rationale","Followed up 9 Sep, no reply yet","Their rule: no AI tools in the designs. In their rounds, talk about AI as your process, not as what made the screens"]},
   {n:"Federal Bank", r:"UI/UX Design (Mobile Banking) · Bangalore", s:["check","No result email"], p:["Via HiPotz (Ankit Gupta). Interviews on 17 Aug and 26 Aug","No result in your inbox. Worth a polite follow-up to Ankit","Asked: vendor dependency, no new team, asking HR for people, versioning","Title says mobile banking, so prep the mobile banking questions below"]},
