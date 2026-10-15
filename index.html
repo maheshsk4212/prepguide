@@ -1954,7 +1954,31 @@ const fab = [
    note:"Two likes, one main point, one small point. Then stop. If they ask for more, use the Aani privacy point from “Know the FAB app”."}
  ]}
 ];
-document.getElementById("qaList").innerHTML = renderQA(qa, "q");
+const RENAME = {
+ "Next interviews: i-exceed, Virtusa, Gemini":"Role-specific practice (i-exceed, Virtusa, Gemini)",
+ "Product Head round":"Product leadership questions",
+ "Final round: say it like a leader":"Senior round: say it like a leader",
+ "VP and Director round":"Design system leadership (VP / Director level)",
+ "Your assignment (EMR Modernization)":"Case study defence: AI in an EMR",
+ "Your numbers and HR basics":"Numbers and HR basics",
+ "Opening":"Design systems role: opening",
+ "Accessibility":"Accessibility in design systems",
+ "Leadership":"Design system team leadership"};
+const RENAME_FAB = {
+ "HR hint · expect these two":"Native mobile: HIG vs Material and feature process",
+ "Opening":"Mobile designer role: opening",
+ "Native iOS and Android":"Native mobile app design",
+ "Working inside their design system":"Working inside an existing design system",
+ "Banking, security and compliance":"Mobile banking security and compliance",
+ "Research, accessibility, handoff, Agile":"Mobile research, accessibility, handoff, Agile",
+ "HR basics and one story":"Mobile role: HR basics and one story",
+ "Live task and portfolio":"Mobile live task, portfolio and app review"};
+const qaAll = [
+  ...qa.map(g=>({...g, g: RENAME[g.g] && g.g.startsWith("Next interviews") ? RENAME[g.g] : g.g})),
+  ...gl.map(g=>({...g, g: RENAME[g.g] || g.g})),
+  ...fab.map(g=>({...g, g: RENAME_FAB[g.g] || g.g}))
+];
+document.getElementById("qaList").innerHTML = renderQA(qaAll, "q");
 document.getElementById("glList").innerHTML = renderQA(gl, "g");
 document.getElementById("fabList").innerHTML = renderQA(fab, "f");
 
@@ -1966,7 +1990,7 @@ const addJump = (listId, data, prefix) => {
   nav.innerHTML = data.map((g,gi)=>`<a href="#${prefix}grp${gi}">${esc(g.g)} <span>${g.items.length}</span></a>`).join("");
   list.parentNode.insertBefore(nav, list);
 };
-addJump("qaList", qa, "q"); addJump("glList", gl, "g"); addJump("fabList", fab, "f");
+addJump("qaList", qaAll, "q"); addJump("glList", gl, "g"); addJump("fabList", fab, "f");
 document.getElementById("rapidList").innerHTML = rapid.map(r=>`
  <details class="q"><summary>${chev}<span class="qtext">${esc(r[0])}</span></summary>
  <div class="qbody"><div class="ans"><p>${esc(r[1])}</p></div></div></details>`).join("");
