@@ -5,10 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
 <meta name="theme-color" content="#0E6B58">
-<title>Mahesh Interview Playbook</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap">
 <style>
 :root{
   --bg:#F4F6F5; --surface:#FFFFFF; --sunk:#E9EEEC; --ink:#14221F; --muted:#5A6B66; --line:#D5DDDA;
@@ -156,11 +152,12 @@ td.num{font-family:var(--display);font-weight:700;font-size:16px;white-space:now
 .fill-list li{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--warn);border-radius:10px;padding:10px 12px;font-size:15px;display:flex;gap:10px}
 .fill-list li::before{counter-increment:f;content:counter(f);font:600 14px var(--mono);color:var(--warn);min-width:20px}
 
-.tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;background:var(--sunk);padding:4px;border-radius:12px}
+.tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;background:var(--sunk);padding:4px;border-radius:12px}
 .tabs button{font:600 15px/1.2 var(--body);color:var(--muted);background:transparent;border:0;border-radius:9px;padding:9px 8px;cursor:pointer;display:flex;flex-wrap:wrap;justify-content:center;align-items:baseline;gap:6px}
 .tabs button[aria-selected="true"]{background:var(--surface);color:var(--ink);box-shadow:0 1px 2px rgba(0,0,0,.08)}
 .tabs button:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
 .tab-when{font:500 11px var(--mono);color:var(--accent);letter-spacing:.03em}
+@media (max-width:520px){.tabs button{font-size:13px;padding:8px 3px;gap:3px}.tab-when{font-size:10px}}
 .callout{background:var(--accent-soft);border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:6px}
 .callout p{font-size:16px}
 .callout.warn{background:var(--warn-soft)}
@@ -190,7 +187,8 @@ footer{padding-top:40px;color:var(--muted);font-size:13px}
     <div class="tabs" role="tablist" aria-label="Guides">
       <button type="button" role="tab" id="tab-main" aria-controls="view-main" aria-selected="true">All interviews</button>
       <button type="button" role="tab" id="tab-gl" aria-controls="view-gl" aria-selected="false">GlobalLogic <span class="tab-when">Awaiting result</span></button>
-      <button type="button" role="tab" id="tab-fab" aria-controls="view-fab" aria-selected="false">Mashreq <span class="tab-when">Today 17:30</span></button>
+      <button type="button" role="tab" id="tab-fab" aria-controls="view-fab" aria-selected="false">Mashreq <span class="tab-when">Done 22 Oct</span></button>
+      <button type="button" role="tab" id="tab-ps" aria-controls="view-ps" aria-selected="false">Presight <span class="tab-when">Mon 15:30</span></button>
     </div>
     <div class="chips" id="chipsFAB" hidden>
       <a href="#fab-top">Before the call</a>
@@ -199,6 +197,15 @@ footer{padding-top:40px;color:var(--muted);font-size:13px}
       <a href="#msq-stories">Your 3 stories</a>
       <a href="#fab-qa">Q&amp;A</a>
       <a href="#msq-ask">Ask them</a>
+    </div>
+    <div class="chips" id="chipsPS" hidden>
+      <a href="#ps-top">Before the call</a>
+      <a href="#ps-know">Know Presight</a>
+      <a href="#ps-fit">Your fit</a>
+      <a href="#ps-stories">Your 3 stories</a>
+      <a href="#ps-task">Live task</a>
+      <a href="#ps-qa">Q&amp;A</a>
+      <a href="#ps-ask">Ask them</a>
     </div>
     <div class="chips" id="chipsGL" hidden>
       <a href="#gl-f2f">Final round</a>
@@ -249,7 +256,8 @@ footer{padding-top:40px;color:var(--muted);font-size:13px}
       <thead><tr><th>Who</th><th>What</th></tr></thead>
       <tbody>
         <tr><td class="num">GlobalLogic</td><td>Final round done 15 Oct. Waiting for the result. Follow up on Mon 19 Oct if no news. Have your ₹ number ready in case it’s a yes</td></tr>
-        <tr><td class="num">Mashreq</td><td>Interview today, Thu 22 Oct, 5:30 PM IST. Prep in the Mashreq tab</td></tr>
+        <tr><td class="num">Presight</td><td>1st technical round Mon 16 Nov, 3:30 PM IST on Teams. Laptop, video on, screen share. Prep in the Presight tab</td></tr>
+        <tr><td class="num">Mashreq</td><td>Interview held 22 Oct. Follow up with Kajal if no news</td></tr>
         <tr><td class="num">Virtusa · FAB</td><td>On hold. Nothing to do now</td></tr>
         <tr><td class="num">Others</td><td>Keep i-exceed and other applications moving while GlobalLogic finishes</td></tr>
       </tbody>
@@ -811,13 +819,161 @@ footer{padding-top:40px;color:var(--muted);font-size:13px}
 <footer>Mashreq tab built from the job description you shared and the Marc Ellis email of 16 Oct. FAB questions are kept in the All interviews tab.</footer>
 </div>
 
+<div class="wrap view" id="view-ps" role="tabpanel" aria-labelledby="tab-ps" hidden>
+<header class="hero" id="ps-top">
+  <span class="label">Presight (G42 group) · Abu Dhabi · 1st round, technical</span>
+  <h1>Senior UI/UX Designer, Presight</h1>
+  <p>Presight builds AI and big-data products for governments and large companies. This role is about <b>dashboards and data-heavy products</b> for web and desktop, <b>AI-assisted design</b> (Figma Make, Claude Design, prompting), and keeping the UI <b>consistent across many products</b>. Lead with your design system and how you turn complex data into simple screens.</p>
+</header>
+
+<section style="padding-top:18px">
+  <div class="facts">
+    <div class="fact"><span class="label">When</span><b>Mon 16 Nov, 3:30 PM</b><span>India time (IST). 2:00 PM in Abu Dhabi</span></div>
+    <div class="fact"><span class="label">Where</span><b>Microsoft Teams</b><span>Link and passcode in Ghayda’s email of 11 Nov</span></div>
+    <div class="fact"><span class="label">Rules</span><b>Laptop only, video on</b><span>No phone. Be ready to share your screen</span></div>
+    <div class="fact"><span class="label">Round</span><b>1st round, technical</b><span>Expect a portfolio walkthrough, design questions, maybe a quick task</span></div>
+  </div>
+  <div class="callout warn">
+    <p><b>Before 3:15 PM:</b> test Teams on the laptop, charger in, notifications off, close other tabs and WhatsApp/email.</p>
+    <p><b>Have open, ready to share:</b> your portfolio, one dashboard or data-heavy file in Figma, your design system file, and one example of AI-assisted work.</p>
+    <p><b>Client work:</b> only show screens you are allowed to show. Say “this is under NDA, I’ll describe it” if not.</p>
+  </div>
+  <div class="callout">
+    <span class="label">Your one line for this role</span>
+    <p>“I turn complex data and workflows into simple screens, I keep many products consistent with one design system, and I use AI tools daily to move faster, with my own UX judgement on top.”</p>
+  </div>
+</section>
+
+<section id="ps-know">
+  <div class="sec-head">
+    <span class="label">Read once before the call</span>
+    <h2>Know Presight</h2>
+  </div>
+  <div class="facts">
+    <div class="fact"><span class="label">Who</span><b>Abu Dhabi, part of G42</b><span>G42 is the majority owner. Listed on ADX since 2023</span></div>
+    <div class="fact"><span class="label">What</span><b>Big data + AI</b><span>“Applied intelligence” for governments and enterprises</span></div>
+    <div class="fact"><span class="label">Reach</span><b>17+ countries</b><span>Offices include Kazakhstan and Jordan</span></div>
+    <div class="fact"><span class="label">Size</span><b>About AED 3B revenue</b><span>2025, growing fast. Say “a fast-growing listed company”</span></div>
+  </div>
+  <div class="tbl">
+    <table>
+      <thead><tr><th>Product</th><th>What it is</th><th>Design angle</th></tr></thead>
+      <tbody>
+        <tr><td><b>Synergy</b></td><td>End-to-end data and AI platform</td><td>Data workflows, dense tables, setup flows</td></tr>
+        <tr><td><b>Agentic Platform</b></td><td>“Enterprise AI operating system”: AI agents for companies</td><td>Showing what the AI did and why, human approval</td></tr>
+        <tr><td><b>IntelliCity / IntelliPlatform</b></td><td>Smart city: traffic, safety, events, facilities, waste</td><td>Live dashboards, maps, alerts, control rooms</td></tr>
+        <tr><td><b>Public safety</b></td><td>Tools for police and emergency teams (Phantom, LifeSaver)</td><td>Fast decisions under pressure, clear alerts</td></tr>
+        <tr><td><b>Sector products</b></td><td>Energy (ENERGYai with ADNOC), finance, education, enterprise</td><td>Many products → one design system</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="callout">
+    <span class="label">Lines to use</span>
+    <p><b>Why Presight:</b> “Presight works where data and AI meet real decisions, for cities and governments. Making that data clear and usable is exactly the kind of problem I like, and the scale across many products fits my design system work.”</p>
+    <p><b>Link to your work:</b> “I’ve worked on a national platform before: CitizenOne in Zambia, a citizen super-app. And my banking work is full of roles, approvals and audit trails, which is the same thinking as operational dashboards.”</p>
+  </div>
+</section>
+
+<section id="ps-fit">
+  <div class="sec-head">
+    <span class="label">Job description vs your proof</span>
+    <h2>Where you fit</h2>
+  </div>
+  <div class="tbl">
+    <table>
+      <thead><tr><th>They want</th><th>Your proof</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td>7+ years UX/UI</td><td>11 years in design, 7+ in UI/UX</td><td class="fit-ok">Strong</td></tr>
+        <tr><td>Design systems, component-based design</td><td>200+ component multi-brand system for 3 banks. Centralized system at JMR: Banking, Academy, Insurance, Ecommerce themes</td><td class="fit-ok">Strong</td></tr>
+        <tr><td>Consistency across many products and platforms</td><td>The JMR centralized system: one core library, a kit per product</td><td class="fit-ok">Strong</td></tr>
+        <tr><td>Complex data and workflows → simple UX</td><td>Multi-authorizer approvals, role routing, audit trails on OBDX</td><td class="fit-ok">Strong</td></tr>
+        <tr><td>AI-assisted design: prompts, generate, refine, judge</td><td>Daily: Claude Code, Figma MCP (used for CitizenOne screen inventory), Figma AI. Global Pay co-pilot concept</td><td class="fit-ok">Strong</td></tr>
+        <tr><td>Figma, Sketch, Photoshop, Illustrator</td><td>Figma daily. Photoshop and Illustrator from your graphic design years</td><td class="fit-ok">Strong</td></tr>
+        <tr><td>Multicultural, cross-functional teams</td><td>Clients in Egypt, Tanzania, Nigeria, Zambia, UAE. PMs, developers, QA every sprint</td><td class="fit-ok">Strong</td></tr>
+        <tr><td>Dashboards for web and desktop</td><td>ClinChoice enterprise dashboards (J&amp;J, P&amp;G). Corporate banking dashboards on OBDX</td><td class="fit-ok">Good. Have one example ready</td></tr>
+        <tr><td>Figma Make, Claude Design</td><td>Say honestly which ones you have actually used, and how</td><td class="fit-gap">Check, be honest</td></tr>
+        <tr><td>Big-data analytics, maps, live monitoring</td><td>Not your main area. Say: “I haven’t designed a live city control room, but here’s how I’d approach it”</td><td class="fit-gap">Gap. Answer with your process</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section id="ps-stories">
+  <div class="sec-head">
+    <span class="label">Have these three ready, 90 seconds each</span>
+    <h2>Your 3 stories</h2>
+  </div>
+  <div class="stories">
+    <div class="story"><div class="story-top"><h3>1. Complex data made simple</h3><span class="tag t-fill">Fill</span></div>
+      <p class="opener">“At [ClinChoice / JMR] I designed a dashboard for [users] who needed to [decision] quickly.”</p>
+      <ul class="beats"><li>Who used it and what decision they made from it</li><li>What was messy before: too many numbers, no order</li><li>What you did: top 3–5 numbers first, filters, drill-down, clear states</li><li>Result or feedback, honestly</li></ul>
+      <p class="uses"><b>Use for:</b> dashboards, data-heavy products, “translate complex data”</p>
+      <p class="fillnote"><b>Pick one real dashboard</b> and fill the brackets. Have the screen open to share.</p></div>
+    <div class="story"><div class="story-top"><h3>2. How AI speeds up my design</h3><span class="tag t-lived">Lived</span></div>
+      <p class="opener">“I use AI every day, but I treat its output as a first draft, not the answer.”</p>
+      <ul class="beats"><li>Figma MCP + Claude: screen inventory for CitizenOne, much faster than by hand</li><li>Claude Code: quick HTML prototypes and tools (like my interview prep site)</li><li>Prompts with context: users, goal, constraints, design system</li><li>I always check: does it fit our components, is it accessible, does it solve the user’s problem</li></ul>
+      <p class="uses"><b>Use for:</b> AI-assisted workflows, prototyping, “evaluate AI-generated designs”</p></div>
+    <div class="story"><div class="story-top"><h3>3. One system, many products</h3><span class="tag t-lived">Lived</span></div>
+      <p class="opener">“At JMR I’m building one centralized design system for Banking, Academy, Insurance and Ecommerce.”</p>
+      <ul class="beats"><li>One core library, then a kit per product, each published separately</li><li>Banking first, then Academy, then Insurance</li><li>Patterns repeated across NMB, ADCB, NBE go into the Banking kit</li><li>Earlier: 200+ components serving 3 bank deployments</li></ul>
+      <p class="uses"><b>Use for:</b> consistency across products, design systems, design process and standards</p></div>
+  </div>
+</section>
+
+<section id="ps-task">
+  <div class="sec-head">
+    <span class="label">If they give you a quick design task</span>
+    <h2>Live task plan</h2>
+  </div>
+  <div class="callout">
+    <p>Likely task: <b>“Design a dashboard for X”</b> (traffic, incidents, energy, a business KPI). Talk out loud. They judge your thinking, not pixels.</p>
+  </div>
+  <ol class="ten">
+    <li><span><b>Ask 2–3 questions (2 min):</b> Who uses it? What decision do they make from it? How often, live or daily? Desktop or a big control-room screen?</span></li>
+    <li><span><b>Pick the top 3–5 numbers</b> the user needs first. Everything else is one click away.</span></li>
+    <li><span><b>Layout:</b> KPIs at top → main chart or map → list of items needing action (alerts, incidents) → filters on top or left.</span></li>
+    <li><span><b>Right chart for the job:</b> trend = line, compare = bar, part of whole = stacked bar (avoid pies with many slices), place = map.</span></li>
+    <li><span><b>Alerts:</b> by severity, colour plus icon plus text (never colour alone), who owns it, and the time.</span></li>
+    <li><span><b>States:</b> loading, no data, error, stale data (“last updated 2 min ago”).</span></li>
+    <li><span><b>Drill-down:</b> click a KPI → filtered list → detail. Keep the filters when going back.</span></li>
+    <li><span><b>Close:</b> how you’d test it with real users, and what you’d measure (time to spot a problem, time to act).</span></li>
+  </ol>
+</section>
+
+<section id="ps-qa">
+  <div class="sec-head">
+    <span class="label">Tap to open · tick when you can say it without notes</span>
+    <h2>Presight questions and answers</h2>
+  </div>
+  <div class="qa" id="psList"></div>
+  <p class="empty" id="psEmpty">No question matches that search.</p>
+</section>
+
+<section id="ps-ask">
+  <div class="sec-head">
+    <span class="label">Pick 2–3</span>
+    <h2>Questions to ask Presight</h2>
+  </div>
+  <ol class="ten">
+    <li><span>“Which product or platform would I work on first, and who are its main users?”</span></li>
+    <li><span>“How does the UX team use AI tools like Figma Make or Claude Design today, and where do you draw the line?”</span></li>
+    <li><span>“Is there a shared design system across Presight products, and who owns it?”</span></li>
+    <li><span>“How often do designers get to see or test with real end users, like operators or analysts?”</span></li>
+    <li><span>“What are the next steps after this round?”</span></li>
+  </ol>
+</section>
+
+<footer>Presight tab built from the job description and the invite in Ghayda’s email of 11 Nov, and Presight’s website.</footer>
+</div>
+
 <script>
 const T = {lived:["t-lived","Lived"], ex:["t-ex","Exercise"], hy:["t-hy","Approach"], fill:["t-fill","Needs your facts"]};
 
 const companies = [
   {n:"GlobalLogic", r:"Design System Manager · Hybrid India", s:["check","Awaiting final result"], p:["Passed L1, assignment, VP/Director and L3","Final round with the Product Head on 15 Oct: deep technical (heuristic evaluation, WCAG)","Result pending. Follow up after 2–3 working days","Technical answers added to the GlobalLogic tab"]},
   {n:"i-exceed", r:"Lead UI/UX Designer · Bangalore", s:["live","L1 coming"], p:["Recruiter Parthiban M (24 Sep): L1 to be scheduled soon","i-exceed builds digital banking platforms, so banking depth is your edge","JD stresses: estimation and schedules, team and client coordination, IA, task flows, prototypes","JD names Adobe XD, Photoshop, JustInMind/Marvel. Be ready to say how you work if they use XD, not Figma","See the “i-exceed” questions below"]},
-  {n:"Mashreq (via Marc Ellis)", r:"Senior Product Designer · Dubai, onsite", s:["live","Today 17:30"], p:["12-month contract, extendable, on Marc Ellis payroll","AED 20,000 + visa + health insurance","Interview Thu 22 Oct, 5:30 PM IST","Full prep in the Mashreq tab at the top"]},
+  {n:"Presight (G42)", r:"Senior UI/UX Designer · Abu Dhabi", s:["live","Mon 16 Nov"], p:["1st round, technical, on Teams: Mon 16 Nov, 3:30 PM IST (2:00 PM UAE)","Laptop only, video on, be ready to share your screen","Role: dashboards, AI-assisted design, design systems","Full prep in the Presight tab at the top"]},
+  {n:"Mashreq (via Marc Ellis)", r:"Senior Product Designer · Dubai, onsite", s:["check","Interviewed 22 Oct"], p:["12-month contract, extendable, on Marc Ellis payroll","AED 20,000 + visa + health insurance","Interview held Thu 22 Oct","Prep kept in the Mashreq tab"]},
   {n:"Virtusa · FAB", r:"UI/UX Product Designer · FAB mobile app", s:["","On hold"], p:["Opening on hold since 13 Oct","FAB questions kept in the All interviews list"]},
   {n:"Nagarro", r:"Mettl test done 24 Sep", s:["live","Waiting"], p:["Test submitted. Nagarro will contact you if shortlisted","Next rounds usually: technical interview, then HR","You asked Lokesh for the JD. Still no role details, so prep the general design Q&A"]},
   {n:"Gemini Solutions", r:"Senior UI Designer, Banking · India", s:["check","No reply"], p:["Round 1 on 2 Sep. Task sent same day","You submitted 5 Sep: AED → INR transfer with co-pilot, 5-page Figma, 2-page rationale","Followed up 9 Sep, no reply yet","Their rule: no AI tools in the designs. In their rounds, talk about AI as your process, not as what made the screens"]},
@@ -1242,7 +1398,7 @@ let store = {};
 try{ store = JSON.parse(localStorage.getItem("mk-prep-done")||"{}"); }catch(e){ store = {}; }
 const save = ()=>{ try{ localStorage.setItem("mk-prep-done", JSON.stringify(store)); }catch(e){} };
 
-const HOOKS = {"Tell me about yourself. (Mashreq)": "11 years · banking end to end · approvals · design system · hands-on in Dubai", "Why Mashreq, and why Dubai?": "Dubai banking hub · digital for businesses · close to users", "This is a contract role. Is that OK for you?": "Yes. Deliver well, glad to extend", "Notice period, start date, relocation?": "30 days · Bengaluru · alone first, family later", "Expected salary?": "AED 20K, already discussed. Confirm, move on", "Walk us through your end-to-end design process.": "Understand · Discover · Define · Ideate · Design · Test · Handover · Measure", "How do you run discovery for an enterprise banking product?": "Stakeholders, then real users. Journey + blueprint. NMB", "Journey map vs workflow vs service blueprint?": "Feelings · logic · behind the scenes", "How do you turn complex business requirements into a simple experience?": "Roles, steps, states. Workflow before screens. Show status", "How do you manage a complex project on your own?": "Agree scope · phases · share early · decision log", "Tell us about the most complex workflow you designed.": "Multi-authorizer payments. Make state visible", "How do you design a maker-checker or multi-level approval flow?": "Ownership + state · limits decide approvers · history log", "How do you design an operational platform for back-office staff?": "Queue first · deadlines · bulk actions · one detail view", "How do you handle roles and permissions in design?": "Role table first · hide or disable with reason", "Have you worked on SME lending or loan origination?": "Honest: closest is corporate approvals and onboarding", "How would you design an SME loan origination journey?": "Eligibility → apply → docs → checks → credit → approval → offer → disburse", "What’s different about SME banking vs retail?": "More roles · more documents · longer approvals · busy owners", "How do you show application status clearly?": "Step tracker · what’s next · what’s missing and why", "How do you design document upload in banking?": "Checklist · instant checks · status per document", "How do you work with Product Owners, business and engineering?": "Outcome · rule behind it · early feasibility", "A stakeholder disagrees with your design. What do you do?": "What they protect · evidence · agree", "How do you work with an existing design system?": "Use · extend · propose last", "What makes a good handover to engineering?": "States · specs · criteria · stay through build", "Walk us through a project from your portfolio.": "Result first · approvals or NMB · 10 minutes","What is a heuristic evaluation?": "Experts vs rules, no users. Complements testing", "Name Nielsen’s 10 usability heuristics, with an example each.": "Status · Real world · Control · Consistency · Prevent · Recognize · Flexible · Minimal · Errors · Help", "How do you run a heuristic evaluation, step by step?": "Scope · 3–5 evaluators · alone first · log + severity · merge · report", "How do you rate severity?": "0 none · 1 cosmetic · 2 minor · 3 major · 4 catastrophe", "What are the limits of heuristic evaluation?": "Skill-dependent · false alarms · misses domain flow · no frequency", "Other heuristic sets besides Nielsen?": "Shneiderman’s 8 Golden Rules · Gerhardt-Powals", "WCAG versions and levels: explain them.": "2.0 / 2.1 / 2.2 (2023). A · AA (target) · AAA. POUR", "Key WCAG numbers you must know": "4.5:1 text · 3:1 large & icons · 200% zoom · 320px reflow · 24px targets", "What’s new in WCAG 2.2?": "Focus not hidden · no-drag option · 24px targets · consistent help · no re-typing · easy login", "How do you test for WCAG?": "Automated (axe) + manual (keyboard, zoom, screen reader) + real users", "What are ARIA and semantic HTML, in simple words?": "Right element first. ARIA only when HTML isn’t enough", "Which laws and standards ask for WCAG? (US client)": "Section 508 · ADA · VPAT · EAA in Europe", "How do you build WCAG into a design system?": "Tokens pass contrast · components accessible once · check every contribution", "What does an automated design system mean?": "Figma → tokens in Git → code for every platform → checks → release", "Example 1: the token pipeline": "Change blue in Figma → PR → Style Dictionary → all apps", "Example 2: automated checks in the pipeline": "Contrast · axe · no hard-coded values. Fails the build", "Example 3: visual regression testing": "Screenshot every component, compare, approve", "Example 4: keeping Figma and code linked": "Code Connect in Dev Mode · Figma MCP", "Example 5: automated docs and audits": "Docs from code · scan Figma for detached parts · AI drafts", "Where would you start with automation here?": "Token pipeline first · then checks · then visual tests and docs","Why does a product need a design system? (product head version)": "Ship faster, fewer bugs, one product. In healthcare: consistency is safety", "How will the design system help my roadmap, not slow it?": "Build for your roadmap. Teams never wait. Report in your numbers", "How do you work with product managers?": "Start from their outcome. Options with trade-offs. PM decides priority", "How do you decide what to build first?": "Reach × pain ÷ cost. Safety risk jumps the queue. Agree it with you", "How do you know a design is working after launch?": "Agree 1–2 numbers before. AI: accept/edit/reject rates", "What do you think about AI in our product?": "Time back for clinicians, only if they trust it. Start with one feature", "A key client wants a feature fast that breaks our design rules. What do you do?": "Meet the deadline, documented exception, fix next release", "What will you do in your first 90 days for my product?": "Learn and list problems · agree rules · ship with a pilot", "Why are you the right person for this?": "Done it before across clients. Regulated industries. Product thinking", "Questions to ask the Product Head": "Year ahead · where design slows you · AI worries · what success looks like","Tell me about yourself. (30 seconds, for a CEO)": "I help companies ship consistent, safe products faster. 3 banks. Healthcare", "Explain your assignment to our CEO in two minutes.": "AI without patient risk. AI, source, you decide. Test with clinicians next", "Explain your assignment to our CTO.": "Build AI once, same way, design and code in sync", "Why should we hire you over others?": "Already ran one system across several clients. GlobalLogic’s model", "How will you make a difference in your first year?": "Month 12: most screens from one system, faster, fewer defects", "How do you handle a CEO or client who wants something that breaks the system?": "Give them the outcome without breaking it. Exception with a cost", "What did you learn from our feedback that you were “soft” with leaders?": "Fair. Impact first now. Calm, short", "What salary are you expecting?": "Know your ₹ number and floor before you go","Tell me about yourself. (leadership version)": "11 years · team of 5 · one system, 3 banks · healthcare · want this at scale", "How do you prove the value of a design system to the business?": "Speed · cost · risk. Agree numbers, baseline, report quarterly", "How do you get teams to adopt the system when they don’t report to you?": "Make the right way the easy way. One pilot team, champions, scorecard", "A product team says the system slows them down before a client deadline. What do you do?": "Unblock now, fix the cause after. The system serves delivery", "Tell me about a conflict with a senior engineer or product leader.": "What they needed to protect · evidence · what we agreed", "Tell me about a failure or a call you got wrong.": "Decision · cost · fix · what I changed", "What’s your view on AI in design and in design systems?": "AI for repetitive work, people decide, three rules for the org", "What are your rules for AI inside a clinical product?": "Clinician in control · label it · show source · edit/reject · audit trail", "GlobalLogic works for clients. How do you handle a client stakeholder who pushes back?": "Real concern · options with trade-offs · write it down", "How would you structure the design system team? What do you need from us?": "Small core + champions. Need: eng partner, place in planning, your backing", "The role asks for Figma plugins and React. Where are you on that?": "Not a coder. I define it and build it with engineers. Say it once", "What would you deliver in your first 90 days?": "Audit · agree rules and numbers · ship 2–3 fixes with a pilot team", "How do you work with teams in other time zones?": "Write it down, small overlap for decisions", "How do you grow the people on your team?": "One area to own, one skill to grow, real decisions", "Why GlobalLogic? Where do you see yourself in three years?": "Scale and variety. In 3 years: running the design systems practice", "When do you say no?": "Breaks accessibility, hides info, or a one-off others will copy. No + alternative", "Walk us through your assignment.": "Safety first, design second. 5 minutes: problem → brief → strategy → components → rollout → gaps", "Why did you choose this approach?": "Three options, why this one, what it costs", "What did you leave out, and what would you do with more time?": "Name 3 gaps, then the next 2 weeks", "How would you test this with real clinicians?": "5–6 clinicians · tell AI from human · check source · fix speed", "How would you roll out your governance plan across teams?": "Pilot → review gate → scale", "What are the biggest risks in your design?": "Over-trust · alert fatigue · wrong output · patient data", "Did you use AI to do the assignment?": "Truth in two lines: where AI helped, what was yours", "How does your assignment connect to your real work?": "Same method as JMR, healthcare from ClinChoice","How did you measure “5 days to 2” and “98% WCAG”?":"What was timed · how it was checked · or the safe line","Why are you leaving JMR?":"Want to go deeper, full time","Where are you based? Notice period?":"Bengaluru, hybrid OK, 30 days (can be 15)","Expected salary?":"Know your ₹ number before 11:00","Where are you based? Visa? Notice period?":"Bengaluru, ready to relocate, visa via employer, 30 days (can be 15)","Tell me about a disagreement with a stakeholder, compliance or engineering.":"They wanted X · I suggested Y · real issue · evidence · agreed","Tell me about yourself.": "11 years · 200+ system, 3 banks · work closely with devs · healthcare · I love the setup behind design", "Why this role?": "The setup behind design is my favorite work. This role is that, full time", "Why should we hire you?": "Real system built · work closely with engineers · accessibility · lead a team · healthcare", "Tell me about a challenging design-system project.": "Drift → audit → tokens → rules → one set for 3 banks", "What is your weakness?": "Brought engineers in late. Now they join on day one", "What is a design system?": "Shared infrastructure, not a Figma library", "How would you build an enterprise design system from scratch?": "Discover · Audit · Foundations · Components · Rules · Measure", "How do you decide what goes into the system?": "Reused + common + same behavior = in. Experimental = keep local", "Explain design tokens.": "Named decisions. Change once, everything updates", "Primitive vs semantic tokens?": "Primitive = what value. Semantic = what it’s for", "What are Figma variables and modes?": "Same name, different value per mode (light/dark, brand)", "Variables vs variants vs component properties?": "Value · configuration · choice", "How do you prevent variant explosion?": "Design the API, not every combination", "How would you structure a large Figma system?": "Foundations → Tokens → Components → Patterns → Docs → Deprecated", "How would you connect Figma variables to code?": "Figma → JSON → transform → CSS / React → components", "What does single source of truth mean to you?": "One home per type of decision, all linked", "Figma and code don’t match. What do you do?": "Find the cause, fix the process, not the person", "How do you work with engineering architects?": "Agree behavior, props, states and accessibility early", "This role needs React knowledge. How technical are you?": "Not a coder. Fluent in the concepts. Mapped Figma to code with our devs", "What does good handoff look like?": "Agree the structure early, stay through design QA", "How do you run design-system governance?": "Light rules, clear owners, review sized to the change", "How would you set up a contribution model?": "Consume · Propose · Contribute · Approve", "How do you stop the system team becoming a bottleneck?": "Centralize standards, not every decision", "How do you measure design-system success?": "Adoption · coverage · reuse · time saved · quality · health", "What is design debt, and how do you tackle it?": "Repeated mess that costs later. Rank by impact and cost", "How would you audit an existing system?": "Three sides: Figma · code · organization", "How do you move off a legacy system?": "No big bang. Deprecate and migrate step by step", "How do you version the system?": "Minor = add. Major = break. Always release notes", "A team wants an exception. What do you do?": "Repeated exceptions mean the system must grow", "How do you prioritize with a small team?": "High reuse, high pain first", "What does Design Operations mean to you?": "People · process · tools · standards · knowledge · measurement", "Have you built Figma plugins?": "Honest: not yet. I know where they pay off, and I’d build it with an engineer", "How would you build a Figma linting plugin?": "Read nodes → check rules → list issues. Rules first, AI later", "Would you build a tool or buy one?": "Buy, unless it’s specific to us and worth the upkeep", "How do you use AI in design-system work?": "AI does the repetitive work. People decide", "How would you combine AI with rule-based QA?": "Rules for facts, AI for judgment, a human decides", "How do you build accessibility into a design system?": "Tokens · components · patterns · checklist", "What is WCAG?": "POUR: Perceivable · Operable · Understandable · Robust", "How do you make sure accessibility isn’t forgotten?": "Put it inside every component spec", "How do you document a component?": "What · when · when not · parts · states · accessibility · code", "What are Design Decision Records?": "Problem · options · choice · why · impact", "How do you reduce dependence on key people?": "Turn what experts know into docs and tools", "How would you onboard a new designer?": "Week 1 learn · week 2 practice · week 3 contribute", "How do you lead a design team?": "Clarity · ownership · enablement", "Two designers disagree on a system decision.": "Evidence beats the loudest voice", "Quality vs deadlines?": "Never cut accessibility or core behavior. Polish can wait", "What would your first 90 days look like?": "Understand · set up · prove it", "Do you have healthcare experience?": "Yes: ClinChoice 2019–21, clinical dashboards for J&J and P&G", "How do you diverge between Apple’s Human Interface Guidelines and Android Material Design for a banking use case?": "Same brand, flow and rules. Native navigation, dialogs and prompts", "What process do you follow to design a new feature, end to end?": "Understand · define · flow · review early · design · test · hand off · measure", "This is a mid-level role. You have 11 years. Why?": "Go deep on one big product. My years make me faster", "Why FAB, and why the UAE?": "Big bank, used every day, and I live here", "What are your salary expectations?": "Ask their budget first. Know your floor", "Which native apps have you designed?": "ADCB mobile banking + Livezy Dubai super-app · feature · problem · fix", "How do you design for iOS and Android differently?": "One shared system, native habits on each", "How do you handle micro-states?": "Every state, especially pending and offline", "How do you use biometrics and login on mobile?": "Fast login, PIN fallback, re-check for risky actions", "Design a transaction history screen.": "Group by date · clear pending · sign, not color · search · detail sheet", "How would you design statements?": "Pick period · summary first · PDF", "Design a multi-account dashboard.": "Balances first · hide toggle · actions one tap away", "How do you make complex financial data scannable?": "One main number · right-aligned · details on tap", "How do you work within an existing, mature design system?": "Use what exists · variant first · propose last", "You found a gap in the system. What do you do?": "Local version now, proposal in parallel", "Figma: auto layout, components, variables, prototyping?": "Auto layout · properties · variables · prototypes", "How do you work with compliance and legal?": "Bring them in early. Ask what the rule protects", "What security considerations go into banking app design?": "Mask · timeout · re-check · warnings · receipt", "How would you design for Arabic users?": "Design both together, mirror with care, test both", "A transfer fails after money leaves the account. What does the app show?": "What happened · where the money is · when it’s back · what next", "How do you test a mobile banking feature?": "Real phone · 5 users · real tasks · fix · retest", "How do you make a mobile app accessible?": "Contrast · 44pt/48dp · labels · big text · not color alone", "What’s in your developer handoff for native apps?": "States · pt/dp · platform differences · QA on device", "How do you work in Agile / Scrum?": "Design one sprint ahead", "Live task: “Improve our transaction list” or “Design a new transfer.”": "Ask · pick one flow · edge cases · test", "Which projects will you show?": "Mobile first · data-heavy · a system piece", "What would you improve in the FAB app?": "Like: big number, plain words. Look at: iOS-style Android nav, AED vs symbol"};
+const HOOKS = {"Tell me about yourself. (Presight)": "11 years · complex data and workflows · design systems · AI daily", "Why Presight?": "Data + AI → real decisions · many products → design system", "Notice period and relocation?": "30 days · ready for Abu Dhabi", "How do you design a dashboard?": "User + decision → KPIs → charts → filters → states → test", "Walk us through a dashboard you designed.": "One real dashboard, open to share", "How do you handle a lot of data on one screen?": "Summary first, detail on demand", "How do you choose the right chart?": "Line trend · bar compare · map place · table exact", "How do you design for real-time or live data?": "Last updated · no jumping · highlight change", "How would you design a control-room dashboard for a smart city?": "Honest first · operators · map + incidents · dark theme", "How do you make charts and dashboards accessible?": "Never colour alone · contrast · table view", "How do you design dashboards for Arabic (right-to-left)?": "Mirror layout · check charts · test", "How do you use AI in your design workflow?": "Fast draft · Figma MCP · Claude Code · I decide", "Have you used Figma Make or Claude Design?": "Honest · same way of working", "How do you write a good prompt for a design?": "Brief: user, goal, platform, constraints, system", "How do you evaluate an AI-generated design?": "Same checks · AI misses edge cases", "When should you NOT use AI?": "Confidential data · user insight · final quality", "How would you design an AI feature people can trust?": "Why · source · person approves · “not sure”", "How do you keep UI consistent across many products?": "Core library + kit per product", "How do you work with PMs, developers and QA?": "Goal · feasibility · criteria", "How do you prototype quickly?": "Wireframe → Figma → HTML with AI", "How have you improved a design process or standard?": "Problem · what you did · what changed", "How do you keep up with UI trends?": "Try in real work · clarity beats style","Tell me about yourself. (Mashreq)": "11 years · banking end to end · approvals · design system · hands-on in Dubai", "Why Mashreq, and why Dubai?": "Dubai banking hub · digital for businesses · close to users", "This is a contract role. Is that OK for you?": "Yes. Deliver well, glad to extend", "Notice period, start date, relocation?": "30 days · Bengaluru · alone first, family later", "Expected salary?": "AED 20K, already discussed. Confirm, move on", "Walk us through your end-to-end design process.": "Understand · Discover · Define · Ideate · Design · Test · Handover · Measure", "How do you run discovery for an enterprise banking product?": "Stakeholders, then real users. Journey + blueprint. NMB", "Journey map vs workflow vs service blueprint?": "Feelings · logic · behind the scenes", "How do you turn complex business requirements into a simple experience?": "Roles, steps, states. Workflow before screens. Show status", "How do you manage a complex project on your own?": "Agree scope · phases · share early · decision log", "Tell us about the most complex workflow you designed.": "Multi-authorizer payments. Make state visible", "How do you design a maker-checker or multi-level approval flow?": "Ownership + state · limits decide approvers · history log", "How do you design an operational platform for back-office staff?": "Queue first · deadlines · bulk actions · one detail view", "How do you handle roles and permissions in design?": "Role table first · hide or disable with reason", "Have you worked on SME lending or loan origination?": "Honest: closest is corporate approvals and onboarding", "How would you design an SME loan origination journey?": "Eligibility → apply → docs → checks → credit → approval → offer → disburse", "What’s different about SME banking vs retail?": "More roles · more documents · longer approvals · busy owners", "How do you show application status clearly?": "Step tracker · what’s next · what’s missing and why", "How do you design document upload in banking?": "Checklist · instant checks · status per document", "How do you work with Product Owners, business and engineering?": "Outcome · rule behind it · early feasibility", "A stakeholder disagrees with your design. What do you do?": "What they protect · evidence · agree", "How do you work with an existing design system?": "Use · extend · propose last", "What makes a good handover to engineering?": "States · specs · criteria · stay through build", "Walk us through a project from your portfolio.": "Result first · approvals or NMB · 10 minutes","What is a heuristic evaluation?": "Experts vs rules, no users. Complements testing", "Name Nielsen’s 10 usability heuristics, with an example each.": "Status · Real world · Control · Consistency · Prevent · Recognize · Flexible · Minimal · Errors · Help", "How do you run a heuristic evaluation, step by step?": "Scope · 3–5 evaluators · alone first · log + severity · merge · report", "How do you rate severity?": "0 none · 1 cosmetic · 2 minor · 3 major · 4 catastrophe", "What are the limits of heuristic evaluation?": "Skill-dependent · false alarms · misses domain flow · no frequency", "Other heuristic sets besides Nielsen?": "Shneiderman’s 8 Golden Rules · Gerhardt-Powals", "WCAG versions and levels: explain them.": "2.0 / 2.1 / 2.2 (2023). A · AA (target) · AAA. POUR", "Key WCAG numbers you must know": "4.5:1 text · 3:1 large & icons · 200% zoom · 320px reflow · 24px targets", "What’s new in WCAG 2.2?": "Focus not hidden · no-drag option · 24px targets · consistent help · no re-typing · easy login", "How do you test for WCAG?": "Automated (axe) + manual (keyboard, zoom, screen reader) + real users", "What are ARIA and semantic HTML, in simple words?": "Right element first. ARIA only when HTML isn’t enough", "Which laws and standards ask for WCAG? (US client)": "Section 508 · ADA · VPAT · EAA in Europe", "How do you build WCAG into a design system?": "Tokens pass contrast · components accessible once · check every contribution", "What does an automated design system mean?": "Figma → tokens in Git → code for every platform → checks → release", "Example 1: the token pipeline": "Change blue in Figma → PR → Style Dictionary → all apps", "Example 2: automated checks in the pipeline": "Contrast · axe · no hard-coded values. Fails the build", "Example 3: visual regression testing": "Screenshot every component, compare, approve", "Example 4: keeping Figma and code linked": "Code Connect in Dev Mode · Figma MCP", "Example 5: automated docs and audits": "Docs from code · scan Figma for detached parts · AI drafts", "Where would you start with automation here?": "Token pipeline first · then checks · then visual tests and docs","Why does a product need a design system? (product head version)": "Ship faster, fewer bugs, one product. In healthcare: consistency is safety", "How will the design system help my roadmap, not slow it?": "Build for your roadmap. Teams never wait. Report in your numbers", "How do you work with product managers?": "Start from their outcome. Options with trade-offs. PM decides priority", "How do you decide what to build first?": "Reach × pain ÷ cost. Safety risk jumps the queue. Agree it with you", "How do you know a design is working after launch?": "Agree 1–2 numbers before. AI: accept/edit/reject rates", "What do you think about AI in our product?": "Time back for clinicians, only if they trust it. Start with one feature", "A key client wants a feature fast that breaks our design rules. What do you do?": "Meet the deadline, documented exception, fix next release", "What will you do in your first 90 days for my product?": "Learn and list problems · agree rules · ship with a pilot", "Why are you the right person for this?": "Done it before across clients. Regulated industries. Product thinking", "Questions to ask the Product Head": "Year ahead · where design slows you · AI worries · what success looks like","Tell me about yourself. (30 seconds, for a CEO)": "I help companies ship consistent, safe products faster. 3 banks. Healthcare", "Explain your assignment to our CEO in two minutes.": "AI without patient risk. AI, source, you decide. Test with clinicians next", "Explain your assignment to our CTO.": "Build AI once, same way, design and code in sync", "Why should we hire you over others?": "Already ran one system across several clients. GlobalLogic’s model", "How will you make a difference in your first year?": "Month 12: most screens from one system, faster, fewer defects", "How do you handle a CEO or client who wants something that breaks the system?": "Give them the outcome without breaking it. Exception with a cost", "What did you learn from our feedback that you were “soft” with leaders?": "Fair. Impact first now. Calm, short", "What salary are you expecting?": "Know your ₹ number and floor before you go","Tell me about yourself. (leadership version)": "11 years · team of 5 · one system, 3 banks · healthcare · want this at scale", "How do you prove the value of a design system to the business?": "Speed · cost · risk. Agree numbers, baseline, report quarterly", "How do you get teams to adopt the system when they don’t report to you?": "Make the right way the easy way. One pilot team, champions, scorecard", "A product team says the system slows them down before a client deadline. What do you do?": "Unblock now, fix the cause after. The system serves delivery", "Tell me about a conflict with a senior engineer or product leader.": "What they needed to protect · evidence · what we agreed", "Tell me about a failure or a call you got wrong.": "Decision · cost · fix · what I changed", "What’s your view on AI in design and in design systems?": "AI for repetitive work, people decide, three rules for the org", "What are your rules for AI inside a clinical product?": "Clinician in control · label it · show source · edit/reject · audit trail", "GlobalLogic works for clients. How do you handle a client stakeholder who pushes back?": "Real concern · options with trade-offs · write it down", "How would you structure the design system team? What do you need from us?": "Small core + champions. Need: eng partner, place in planning, your backing", "The role asks for Figma plugins and React. Where are you on that?": "Not a coder. I define it and build it with engineers. Say it once", "What would you deliver in your first 90 days?": "Audit · agree rules and numbers · ship 2–3 fixes with a pilot team", "How do you work with teams in other time zones?": "Write it down, small overlap for decisions", "How do you grow the people on your team?": "One area to own, one skill to grow, real decisions", "Why GlobalLogic? Where do you see yourself in three years?": "Scale and variety. In 3 years: running the design systems practice", "When do you say no?": "Breaks accessibility, hides info, or a one-off others will copy. No + alternative", "Walk us through your assignment.": "Safety first, design second. 5 minutes: problem → brief → strategy → components → rollout → gaps", "Why did you choose this approach?": "Three options, why this one, what it costs", "What did you leave out, and what would you do with more time?": "Name 3 gaps, then the next 2 weeks", "How would you test this with real clinicians?": "5–6 clinicians · tell AI from human · check source · fix speed", "How would you roll out your governance plan across teams?": "Pilot → review gate → scale", "What are the biggest risks in your design?": "Over-trust · alert fatigue · wrong output · patient data", "Did you use AI to do the assignment?": "Truth in two lines: where AI helped, what was yours", "How does your assignment connect to your real work?": "Same method as JMR, healthcare from ClinChoice","How did you measure “5 days to 2” and “98% WCAG”?":"What was timed · how it was checked · or the safe line","Why are you leaving JMR?":"Want to go deeper, full time","Where are you based? Notice period?":"Bengaluru, hybrid OK, 30 days (can be 15)","Expected salary?":"Know your ₹ number before 11:00","Where are you based? Visa? Notice period?":"Bengaluru, ready to relocate, visa via employer, 30 days (can be 15)","Tell me about a disagreement with a stakeholder, compliance or engineering.":"They wanted X · I suggested Y · real issue · evidence · agreed","Tell me about yourself.": "11 years · 200+ system, 3 banks · work closely with devs · healthcare · I love the setup behind design", "Why this role?": "The setup behind design is my favorite work. This role is that, full time", "Why should we hire you?": "Real system built · work closely with engineers · accessibility · lead a team · healthcare", "Tell me about a challenging design-system project.": "Drift → audit → tokens → rules → one set for 3 banks", "What is your weakness?": "Brought engineers in late. Now they join on day one", "What is a design system?": "Shared infrastructure, not a Figma library", "How would you build an enterprise design system from scratch?": "Discover · Audit · Foundations · Components · Rules · Measure", "How do you decide what goes into the system?": "Reused + common + same behavior = in. Experimental = keep local", "Explain design tokens.": "Named decisions. Change once, everything updates", "Primitive vs semantic tokens?": "Primitive = what value. Semantic = what it’s for", "What are Figma variables and modes?": "Same name, different value per mode (light/dark, brand)", "Variables vs variants vs component properties?": "Value · configuration · choice", "How do you prevent variant explosion?": "Design the API, not every combination", "How would you structure a large Figma system?": "Foundations → Tokens → Components → Patterns → Docs → Deprecated", "How would you connect Figma variables to code?": "Figma → JSON → transform → CSS / React → components", "What does single source of truth mean to you?": "One home per type of decision, all linked", "Figma and code don’t match. What do you do?": "Find the cause, fix the process, not the person", "How do you work with engineering architects?": "Agree behavior, props, states and accessibility early", "This role needs React knowledge. How technical are you?": "Not a coder. Fluent in the concepts. Mapped Figma to code with our devs", "What does good handoff look like?": "Agree the structure early, stay through design QA", "How do you run design-system governance?": "Light rules, clear owners, review sized to the change", "How would you set up a contribution model?": "Consume · Propose · Contribute · Approve", "How do you stop the system team becoming a bottleneck?": "Centralize standards, not every decision", "How do you measure design-system success?": "Adoption · coverage · reuse · time saved · quality · health", "What is design debt, and how do you tackle it?": "Repeated mess that costs later. Rank by impact and cost", "How would you audit an existing system?": "Three sides: Figma · code · organization", "How do you move off a legacy system?": "No big bang. Deprecate and migrate step by step", "How do you version the system?": "Minor = add. Major = break. Always release notes", "A team wants an exception. What do you do?": "Repeated exceptions mean the system must grow", "How do you prioritize with a small team?": "High reuse, high pain first", "What does Design Operations mean to you?": "People · process · tools · standards · knowledge · measurement", "Have you built Figma plugins?": "Honest: not yet. I know where they pay off, and I’d build it with an engineer", "How would you build a Figma linting plugin?": "Read nodes → check rules → list issues. Rules first, AI later", "Would you build a tool or buy one?": "Buy, unless it’s specific to us and worth the upkeep", "How do you use AI in design-system work?": "AI does the repetitive work. People decide", "How would you combine AI with rule-based QA?": "Rules for facts, AI for judgment, a human decides", "How do you build accessibility into a design system?": "Tokens · components · patterns · checklist", "What is WCAG?": "POUR: Perceivable · Operable · Understandable · Robust", "How do you make sure accessibility isn’t forgotten?": "Put it inside every component spec", "How do you document a component?": "What · when · when not · parts · states · accessibility · code", "What are Design Decision Records?": "Problem · options · choice · why · impact", "How do you reduce dependence on key people?": "Turn what experts know into docs and tools", "How would you onboard a new designer?": "Week 1 learn · week 2 practice · week 3 contribute", "How do you lead a design team?": "Clarity · ownership · enablement", "Two designers disagree on a system decision.": "Evidence beats the loudest voice", "Quality vs deadlines?": "Never cut accessibility or core behavior. Polish can wait", "What would your first 90 days look like?": "Understand · set up · prove it", "Do you have healthcare experience?": "Yes: ClinChoice 2019–21, clinical dashboards for J&J and P&G", "How do you diverge between Apple’s Human Interface Guidelines and Android Material Design for a banking use case?": "Same brand, flow and rules. Native navigation, dialogs and prompts", "What process do you follow to design a new feature, end to end?": "Understand · define · flow · review early · design · test · hand off · measure", "This is a mid-level role. You have 11 years. Why?": "Go deep on one big product. My years make me faster", "Why FAB, and why the UAE?": "Big bank, used every day, and I live here", "What are your salary expectations?": "Ask their budget first. Know your floor", "Which native apps have you designed?": "ADCB mobile banking + Livezy Dubai super-app · feature · problem · fix", "How do you design for iOS and Android differently?": "One shared system, native habits on each", "How do you handle micro-states?": "Every state, especially pending and offline", "How do you use biometrics and login on mobile?": "Fast login, PIN fallback, re-check for risky actions", "Design a transaction history screen.": "Group by date · clear pending · sign, not color · search · detail sheet", "How would you design statements?": "Pick period · summary first · PDF", "Design a multi-account dashboard.": "Balances first · hide toggle · actions one tap away", "How do you make complex financial data scannable?": "One main number · right-aligned · details on tap", "How do you work within an existing, mature design system?": "Use what exists · variant first · propose last", "You found a gap in the system. What do you do?": "Local version now, proposal in parallel", "Figma: auto layout, components, variables, prototyping?": "Auto layout · properties · variables · prototypes", "How do you work with compliance and legal?": "Bring them in early. Ask what the rule protects", "What security considerations go into banking app design?": "Mask · timeout · re-check · warnings · receipt", "How would you design for Arabic users?": "Design both together, mirror with care, test both", "A transfer fails after money leaves the account. What does the app show?": "What happened · where the money is · when it’s back · what next", "How do you test a mobile banking feature?": "Real phone · 5 users · real tasks · fix · retest", "How do you make a mobile app accessible?": "Contrast · 44pt/48dp · labels · big text · not color alone", "What’s in your developer handoff for native apps?": "States · pt/dp · platform differences · QA on device", "How do you work in Agile / Scrum?": "Design one sprint ahead", "Live task: “Improve our transaction list” or “Design a new transfer.”": "Ask · pick one flow · edge cases · test", "Which projects will you show?": "Mobile first · data-heavy · a system piece", "What would you improve in the FAB app?": "Like: big number, plain words. Look at: iOS-style Android nav, AED vs symbol"};
 const renderQA = (list, prefix) => { let n = 0; return list.map((g,gi)=>`
  <div class="group" data-group id="${prefix}grp${gi}"><div class="group-title">${esc(g.g)}</div>
  ${g.items.map(it=>{ const id=prefix+(++n); return `
@@ -2068,6 +2224,111 @@ const msq = [
  ]}
 ];
 
+
+const ps = [
+ {g:"Opening", items:[
+  {q:"Tell me about yourself. (Presight)", type:"lived", a:[
+   "I’m a senior product designer with 11 years in design, 7+ in UI/UX.",
+   "Most of my recent work is complex enterprise products: banking platforms for clients in the Middle East and Africa, a national citizen app in Zambia, and earlier enterprise dashboards for pharma clients like J&J and P&G.",
+   "I’m strong in two things this role needs: turning complex data and workflows into simple screens, and design systems. I’m building one centralized system that serves several products.",
+   "And I use AI tools every day in my design work, with my own UX judgement on top."]},
+  {q:"Why Presight?", type:"lived", a:[
+   "Presight works where data and AI meet real decisions, for cities, governments and big companies.",
+   "Making that data clear and usable is the problem I enjoy most. And the number of products you have makes design system thinking really valuable, which is my strength."]},
+  {q:"Notice period and relocation?", type:"lived", a:[
+   "“30 days’ notice. I’m in Bengaluru and ready to move to Abu Dhabi.”"]}
+ ]},
+ {g:"Dashboards and data", items:[
+  {q:"How do you design a dashboard?", type:"lived", a:[
+   "Start with the user and the decision: who looks at it, how often, and what they do next.",
+   "Pick the few numbers that matter most and put them first. Everything else is one click away.",
+   "Choose charts by the question: trend, comparison, part of a whole, or location.",
+   "Add filters, drill-down to detail, and every state: loading, empty, error, old data.",
+   "Then test with real users: can they spot the problem and act on it quickly?"],
+   code:"User + decision → Top KPIs → Right charts → Filters + drill-down → States → Test"},
+  {q:"Walk us through a dashboard you designed.", type:"fill", a:[
+   "“At [ClinChoice / JMR], [users] needed to [decision]. Before, [problem]. I [what you did: KPIs first, filters, drill-down]. The result was [feedback or result].”"],
+   fillnote:"Pick one real dashboard and have it open to share. Don’t invent numbers."},
+  {q:"How do you handle a lot of data on one screen?", type:"hy", a:[
+   "Order it by importance: summary first, detail on demand.",
+   "Group related data, use clear labels and units, and use white space to separate.",
+   "Give tables good tools: sort, filter, search, sticky headers, saved views.",
+   "Let users choose density, comfortable or compact, for power users."]},
+  {q:"How do you choose the right chart?", type:"hy", a:[
+   "Trend over time: line. Compare items: bar. Part of a whole: stacked bar, or a pie only with 2–3 parts. Spread: histogram. Place: map. Exact values: table.",
+   "Avoid 3D charts and too many colours. Start the bar axis at zero. Label directly where possible."]},
+  {q:"How do you design for real-time or live data?", type:"hy", a:[
+   "Show when the data was last updated, and if it’s stale.",
+   "Don’t make the screen jump: update numbers smoothly, and don’t move items while the user is reading.",
+   "Highlight what changed, and let the user pause or freeze a view.",
+   "For alerts: severity, owner, time, and one clear action."]},
+  {q:"How would you design a control-room dashboard for a smart city?", type:"hy", a:[
+   "Honest first: “I haven’t designed a city control room, but this is how I’d approach it.”",
+   "Talk to operators first: what they watch, what they react to, what goes wrong today.",
+   "A map as the main view, a live list of incidents by severity, and KPIs on top.",
+   "Dark theme for long shifts, large readable text for big screens, colour plus icon plus text for alerts.",
+   "Clear handover between shifts, and an audit trail of who did what, like the approval flows I design in banking."]},
+  {q:"How do you make charts and dashboards accessible?", type:"hy", a:[
+   "Never use colour alone: add labels, patterns or icons.",
+   "Enough contrast for text and chart lines, readable font sizes.",
+   "Keyboard access to filters and tables, and a table view of chart data for screen readers.",
+   "Colour-blind safe palettes. In my banking work we reached about 98% WCAG 2.1 AA across 150+ screens."]},
+  {q:"How do you design dashboards for Arabic (right-to-left)?", type:"hy", a:[
+   "Mirror the layout: navigation, reading order, icons with direction.",
+   "Don’t mirror charts over time without checking with users. Many Arabic users still read time left to right on charts.",
+   "Numbers, logos and media controls usually stay as they are. Test with real Arabic users."]}
+ ]},
+ {g:"AI in your design work", items:[
+  {q:"How do you use AI in your design workflow?", type:"lived", a:[
+   "Every day, as a fast first draft.",
+   "Figma MCP with Claude: I did the screen inventory for CitizenOne this way, much faster than by hand.",
+   "Claude Code: quick HTML prototypes and small tools, like my own interview prep site.",
+   "Research and writing: summarising notes, drafting UX copy, generating edge cases.",
+   "But I make the decisions. I check every output against the user, the design system and accessibility."]},
+  {q:"Have you used Figma Make or Claude Design?", type:"fill", a:[
+   "Say exactly what you have used. If not one of them: “Not that one yet, but I use [Figma AI / Figma MCP / Claude Code] daily, so the way of working is the same: prompt with context, generate, then refine and judge. I’d pick it up quickly.”"],
+   fillnote:"Be honest. Don’t claim a tool you haven’t used. Try Figma Make for 20 minutes before Monday if you can."},
+  {q:"How do you write a good prompt for a design?", type:"lived", a:[
+   "Give context like a brief: who the user is, what they need to do, the platform, the constraints, and the design system to follow.",
+   "Ask for one thing at a time, then refine step by step.",
+   "Show examples of what good looks like."],
+   code:"“Design a desktop dashboard for traffic operators. They need to spot and act on incidents fast. Show 4 KPIs, a city map and an incident list by severity. Use our components and an 8px grid. Dark theme.”"},
+  {q:"How do you evaluate an AI-generated design?", type:"lived", a:[
+   "Same checks as any design: does it solve the user’s problem, is the hierarchy clear, does it use our components and tokens, is it accessible, does it handle edge cases and errors?",
+   "AI often looks good but misses real data, empty states, long text, and rules of the business. That’s where I step in."]},
+  {q:"When should you NOT use AI?", type:"lived", a:[
+   "When the data is confidential: no client or government data goes into public AI tools.",
+   "When the decision needs real user insight. AI can’t replace talking to users.",
+   "And for final quality: AI gives a draft, the designer owns the result."],
+   note:"Important at Presight: their clients are governments. Show you take data privacy seriously."},
+  {q:"How would you design an AI feature people can trust?", type:"lived", a:[
+   "Show why the AI suggests something, and where the data comes from.",
+   "Keep the person in control: AI suggests, the person approves.",
+   "Say “I’m not sure” when confidence is low, and offer a human or manual route.",
+   "My Global Pay co-pilot concept follows this: the co-pilot can explain and suggest, but every action needs the user’s click."],
+   note:"Global Pay is a concept, not live. Say so."}
+ ]},
+ {g:"Design systems and process", items:[
+  {q:"How do you keep UI consistent across many products?", type:"lived", a:[
+   "One core library with tokens and base components, then a kit per product on top.",
+   "At JMR I’m doing this for Banking, Academy, Insurance and Ecommerce, each kit published separately.",
+   "Clear rules on when to use, extend, or add a component, plus regular reviews with designers and developers."]},
+  {q:"How do you work with PMs, developers and QA?", type:"lived", a:[
+   "PMs: agree the goal and priorities early, show options with trade-offs.",
+   "Developers: involve them early on feasibility, then hand over states, specs and tokens.",
+   "QA: share acceptance criteria and edge cases, and review the build together before release."]},
+  {q:"How do you prototype quickly?", type:"lived", a:[
+   "Low fidelity first: flows and wireframes to agree the logic.",
+   "Then clickable prototypes in Figma with real components.",
+   "For tricky interactions, a quick HTML prototype with AI help."]},
+  {q:"How have you improved a design process or standard?", type:"fill", a:[
+   "“At JMR, [problem: e.g. screens rebuilt for every bank]. I [what you did: centralized system, review process, naming rules]. Now [result].”"],
+   fillnote:"Use the design system or handover story. Say only what really changed."},
+  {q:"How do you keep up with UI trends?", type:"lived", a:[
+   "I follow design and AI tools closely and try new tools in real work.",
+   "But I only use a trend if it helps the user. For data products, clarity beats style."]}
+ ]}
+];
 const RENAME_FAB = {
  "HR hint · expect these two":"Native mobile: HIG vs Material and feature process",
  "Opening":"Mobile designer role: opening",
@@ -2095,11 +2356,12 @@ const addJump = (listId, data, prefix) => {
   list.parentNode.insertBefore(nav, list);
 };
 addJump("qaList", qaAll, "q"); addJump("glList", gl, "g"); addJump("fabList", msq, "m");
+document.getElementById("psList").innerHTML = renderQA(ps, "p"); addJump("psList", ps, "p");
 document.getElementById("rapidList").innerHTML = rapid.map(r=>`
  <details class="q"><summary>${chev}<span class="qtext">${esc(r[0])}</span></summary>
  <div class="qbody"><div class="ans"><p>${esc(r[1])}</p></div></div></details>`).join("");
 
-["qaList","glList","fabList"].forEach(id=>document.getElementById(id).addEventListener("change", e=>{
+["qaList","glList","fabList","psList"].forEach(id=>document.getElementById(id).addEventListener("change", e=>{
   if(e.target.type!=="checkbox") return;
   const d = e.target.closest("details"); const k = d.dataset.id;
   if(e.target.checked){ store[k]=1; d.classList.add("is-done"); } else { delete store[k]; d.classList.remove("is-done"); }
@@ -2108,7 +2370,8 @@ document.getElementById("rapidList").innerHTML = rapid.map(r=>`
 
 const views = {main:{tab:"tab-main",view:"view-main",chips:"chipsMain",list:"qaList",empty:"empty",sec:"qa"},
                gl:{tab:"tab-gl",view:"view-gl",chips:"chipsGL",list:"glList",empty:"glEmpty",sec:"gl-qa"},
-               fab:{tab:"tab-fab",view:"view-fab",chips:"chipsFAB",list:"fabList",empty:"fabEmpty",sec:"fab-qa"}};
+               fab:{tab:"tab-fab",view:"view-fab",chips:"chipsFAB",list:"fabList",empty:"fabEmpty",sec:"fab-qa"},
+               ps:{tab:"tab-ps",view:"view-ps",chips:"chipsPS",list:"psList",empty:"psEmpty",sec:"ps-qa"}};
 let current = "main";
 const search = document.getElementById("search");
 function runSearch(){
@@ -2135,7 +2398,7 @@ function show(name, scroll){
     document.getElementById(c.chips).hidden = !on;
     document.getElementById(c.tab).setAttribute("aria-selected", on ? "true" : "false");
   });
-  search.placeholder = {gl:"Search GlobalLogic questions (e.g. tokens, plugin, React)", fab:"Search Mashreq questions (e.g. approval, loan, discovery)", main:"Search any question (e.g. tokens, RTL, salary)"}[name];
+  search.placeholder = {gl:"Search GlobalLogic questions (e.g. tokens, plugin, React)", fab:"Search Mashreq questions (e.g. approval, loan, discovery)", ps:"Search Presight questions (e.g. dashboard, AI, chart)", main:"Search any question (e.g. tokens, RTL, salary)"}[name];
   if(search.value) runSearch();
   try{ localStorage.setItem("mk-prep-tab", name); }catch(e){}
   if(scroll) window.scrollTo(0,0);
@@ -2143,10 +2406,12 @@ function show(name, scroll){
 document.getElementById("tab-main").addEventListener("click", ()=>show("main", true));
 document.getElementById("tab-gl").addEventListener("click", ()=>show("gl", true));
 document.getElementById("tab-fab").addEventListener("click", ()=>show("fab", true));
+document.getElementById("tab-ps").addEventListener("click", ()=>show("ps", true));
 let start = "main";
-try{ const t = localStorage.getItem("mk-prep-tab"); if(t==="gl"||t==="fab") start = t; }catch(e){}
+try{ const t = localStorage.getItem("mk-prep-tab"); if(t==="gl"||t==="fab"||t==="ps") start = t; }catch(e){}
 if(/^#(globallogic|gl)/.test(location.hash)) start = "gl";
-if(/^#(fab|virtusa)/.test(location.hash)) start = "fab";
+if(/^#(fab|virtusa|mashreq)/.test(location.hash)) start = "fab";
+if(/^#(ps|presight)/.test(location.hash)) start = "ps";
 show(start, false);
 </script>
 </body>
